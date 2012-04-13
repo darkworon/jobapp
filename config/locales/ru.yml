@@ -69,6 +69,8 @@ ru:
       city: Город
       salary: Зарплата
       priority: Приоритет
+    publish:
+      limit_exceeded: "Превышен лимит опубликованных вакансий."
     vacancy:
       publish: Опубликовать
       unpublish: Скрыть

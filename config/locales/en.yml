@@ -94,6 +94,8 @@ en:
       create_based_on: Create based on
       edit: Edit
       delete: Delete
+    publish:
+      limit_exceeded: "Limit of published vacancies exceeded."
     vacancies_left_info:
       click_to_edit: Click to edit...
       you_can_publish:
@@ -101,6 +103,7 @@ en:
         few: "You can publish %{count} more vacancies."
         many: "You can publish %{count} more vacancies."
         other: "You can publish %{count} more vacancies."
+      limit_exceeded_short: "Limit of published vacancies exceeded."
       limit_exceeded: "Limit of published vacancies exceeded. Please, buy subscription to publish more vacancies."
     subnav:
       create_new_vacancy: Create new vacancy
