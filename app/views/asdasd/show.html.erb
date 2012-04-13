@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1><%= @job.title %></h1><br /><br />
+
+<p><b>Description:</b>
+  <%= @job.description %><br /><br />
+</p>
+
+<p>
+  <b>Career:</b>
+  <%= @job.career %>
+</p>
+<p>
+	<b>Type:</b>
+  <%= @job.translated_job_entry_type %>
+	</p>
+
+<p>
+  <b>City:</b>
+  <%= @job.city %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @job.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @job.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @job.email %>
+</p>
+
+<p>
+  <b>Salary:</b>
+  <%= @job.salary %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%= @job.birthdate %>
+</p>
+
+<p>
+  <b>Experience period:</b>
+  <%= @job.experience_period %>
+</p>
+
+<%= link_to 'Back', jobs_path %>

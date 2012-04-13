@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  payment_url: MyString
+  website: MyString
+  is_online_payment: false
+
+two:
+  name: MyString
+  payment_url: MyString
+  website: MyString
+  is_online_payment: false

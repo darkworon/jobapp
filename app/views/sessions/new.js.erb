@@ -1,0 +1,9 @@
+$.lazybox('<%= escape_javascript(render(partial:"login")) %>');
+//$("#lazybox").find("button").click(function(){
+//	//$(this).parent().submit();
+//	$(this).attr("disabled", "disabled");
+//});
+
+$("#lazybox_body").submit(function(){
+	$("#lazybox").find("button").attr("disabled", "disabled");
+});

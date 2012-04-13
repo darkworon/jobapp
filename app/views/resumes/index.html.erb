@@ -1,0 +1,24 @@
+	<h1>Мои резюме</h1>
+<% if @resumes.count > 0 %>
+	<table class="sortable">
+	  <tr>
+	    <th>Наименование</th>
+	    <th>Навыки</th>
+	    <th>Карьера</th>
+	    <th>Город</th>
+	    <th>Заработная плата</th>
+			<th>Приоритет</th>
+			<th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	<%= render @resumes %>
+	</table>
+	<br />
+<div class="resumes_left_info">
+<%= render 'resumes_left_info' %>
+</div>
+<%= will_paginate @resumes %>
+<% else %>
+<p>Резюме пока нет... Создайте хотя бы одно.</p>
+<% end %>

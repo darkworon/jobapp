@@ -1,0 +1,15 @@
+//var parent = $("#vacancy_search").parent();
+$("#resume_search").parent().html('<%= escape_javascript(render(partial:"vacancy")) %>');
+$("#vacancy_search").html('<%= escape_javascript(render(partial:"vacancy")) %>');
+$("#resume_search").remove();
+$(".search_vacancy_hide").click(function(){
+	$(this).replaceWith("Скрыта!");
+});
+$(".search_vacancy_ban").click(function(){
+	$(this).replaceWith("Забанена!");
+});
+$("#vacancy_search input.submit").click(function(){
+	var url = window.location.pathname;
+	var text = $("input#search").val();
+	$.setFragment({ "search" : text });
+});

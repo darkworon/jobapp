@@ -1,0 +1,35 @@
+<h1>Listing banking_details</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Company</th>
+    <th>Bank name</th>
+    <th>City</th>
+    <th>Current account</th>
+    <th>Correspondent account</th>
+    <th>Bik</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @banking_details.each do |banking_detail| %>
+  <tr>
+    <td><%= banking_detail.user_id %></td>
+    <td><%= banking_detail.company_id %></td>
+    <td><%= banking_detail.bank_name %></td>
+    <td><%= banking_detail.city %></td>
+    <td><%= banking_detail.current_account %></td>
+    <td><%= banking_detail.correspondent_account %></td>
+    <td><%= banking_detail.bik %></td>
+    <td><%= link_to 'Show', banking_detail %></td>
+    <td><%= link_to 'Edit', edit_banking_detail_path(banking_detail) %></td>
+    <td><%= link_to 'Destroy', banking_detail, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Banking detail', new_banking_detail_path %>

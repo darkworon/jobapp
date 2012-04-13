@@ -1,0 +1,33 @@
+<h1>Users</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>City</th>
+    <th>Phone</th>
+	<th>Resumes</th>
+	<th>Vacancies</th>
+	<th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.email, "#" %></td>
+    <td><%= user.firstname %></td>
+    <td><%= user.lastname %></td>
+    <td><%= user.city %></td>
+    <td><%= user.phone %></td>
+	<td><%= user.resumes.count %></td>
+	<td><%= user.vacancies.count %></td>
+	<td><%= user.status %></td>
+    <td><%= link_to 'Edit', edit_user_path(user), target: "_blank" %></td>
+    <td><%= link_to 'X', "#" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

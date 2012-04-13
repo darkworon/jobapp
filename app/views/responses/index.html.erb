@@ -1,0 +1,34 @@
+<table>
+	<tr>
+		<td>
+			Новых откликов на ваши резюме
+		</td>
+		<td>
+			<%= link_to resume_resp_recieved_count, resume_responses_path, target: "_blank" %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Новых откликов на ваши вакансии
+		</td>
+		<td>
+			<%= link_to vacancy_resp_recieved_count, vacancy_responses_path, target: "_blank" %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Новых ответов на ваши отклики на резюме
+		</td>
+		<td>
+			<%= link_to resume_resp_sent_count, resume_responses_path, target: "_blank" %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Новых ответов на ваши отклики на вакансии
+		</td>
+		<td>
+			<%= link_to vacancy_resp_sent_count, vacancy_responses_path, target: "_blank" %>
+		</td>
+	</tr>
+</table>

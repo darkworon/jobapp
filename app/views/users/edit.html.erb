@@ -1,0 +1,41 @@
+<div id="tab2" class="tab_content">
+	<h2>Editing profile of <%= @user.email%></h2>
+	<%= form_for @user, url: update_user_path do |f| %>
+	  <% if @user.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+	      <ul>
+	      <% @user.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    
+	  <% end %>
+	  <p><%= f.label :email %><br />
+	    <%= f.text_field :email, class: "text medium" %></p><br />
+	
+	 <p><%= f.label :firstname %><br />
+	    <%= f.text_field :firstname, class: "text medium" %></p>
+	  
+	    <p><%= f.label :lastname %><br />
+	    <%= f.text_field :lastname, class: "text medium" %></p><br />
+		<% if @current_user.is_admin? %>
+		<p><%= f.label :status %><br />
+		    <%= f.text_field :status, class: "text medium" %></p>
+		<% end %>
+		<p><%= f.label :city %><br />
+	    <%= f.text_field :city, class: "text medium" %></p>
+	
+		<p><%= f.label :phone %><br />
+	    <%= f.text_field :phone, class: "text medium" %></p><br /><br />
+	  
+	  
+	    <p><%= f.label :password, "New Password" %><br />
+	    <%= f.password_field :password, class: "text medium" %></p>
+	  
+	   <p><%= f.submit "Update", class: "submit" %></p>
+	  
+	<% end %>
+
+

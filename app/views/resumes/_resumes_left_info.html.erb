@@ -1,0 +1,29 @@
+<% resumes_left = @resumes_max - @current_user.resumes.where(status: 1).count %>
+<% if resumes_left > 0 %>
+	Вы можете опубликовать еще <%= resumes_left %> резюме.<br /><br />
+<% else %>
+	Лимит публикуемых резюме исчерпан. Приобретите подписку для публикации большего числа резюме.<br /><br />
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(".salary.editable").editable('<%= resume_salary_path %>', {
+					 loadurl: '<%= resume_salary_path %>',
+					 cssclass: "salary_edit",
+					 name : 'salary',
+	         submit    : 'OK',
+					 cancel: 'Отмена',
+	         indicator : 'Сохраняем...',
+	         tooltip   : 'Кликни для изменения...'					
+	  });
+		$(".priority.editable").editable('<%= resume_priority_path %>', {
+						type: "select",
+						 //loadurl: '<%= resume_priority_path %>',
+						 data: '{"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10}',
+						 //data: {"1": "1", "2": "2"},
+						 name : 'priority',
+		         //indicator : 'Сохраняем...',
+		         tooltip   : 'Кликни для изменения...'					
+		  });
+			$('select').live('change', function () {
+			             $(this).parent().submit();
+			        });
+</script>

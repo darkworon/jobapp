@@ -1,0 +1,29 @@
+<h1>Listing payment_providers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Payment url</th>
+    <th>Website</th>
+    <th>Is online payment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payment_providers.each do |payment_provider| %>
+  <tr>
+    <td><%= payment_provider.name %></td>
+    <td><%= payment_provider.payment_url %></td>
+    <td><%= payment_provider.website %></td>
+    <td><%= payment_provider.is_online_payment %></td>
+    <td><%= link_to 'Show', payment_provider %></td>
+    <td><%= link_to 'Edit', edit_payment_provider_path(payment_provider) %></td>
+    <td><%= link_to 'Destroy', payment_provider, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payment provider', new_payment_provider_path %>

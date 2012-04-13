@@ -1,0 +1,17 @@
+<%= form_for @vacancy_response, url: create_vacancy_response_path, id: params[:id] do |f| %>
+  <% if @vacancy_response.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @vacancy_response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.select :resume_id, options_for_select(@current_user.resumes.collect {|p| ["#{p.title}", p.id]}), prompt: "Выберите резюме..." %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Отправить" %>
+  </div>
+<% end %>

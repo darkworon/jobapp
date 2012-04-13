@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Vacancy:</b>
+  <%= link_to @vacancy_response.vacancy.title, vacancy_path(@vacancy_response.vacancy) %>
+</p>
+
+<p>
+  <b>Your resume:</b>
+  <%= link_to @vacancy_response.resume.title, resume_path(@vacancy_response.resume) %>
+</p>
+
+<p>
+  <b>Sender:</b>
+  <%= @vacancy_response.sender.name %>
+</p>
+
+<%= link_to "Accept", accept_response_path(@vacancy_response) %>  |  <%= link_to "Decline", decline_response_path(@vacancy_response) %>

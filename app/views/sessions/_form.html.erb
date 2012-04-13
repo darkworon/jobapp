@@ -1,0 +1,18 @@
+<%= form_tag login_path(back_url: params[:back_url]), :class => "loginform", :id => "loginform" do %>
+	<div id="logo"><h1><%= @site_header.html_safe %></h1></div>
+	<p><%= t('.legend') %></p>
+	<%= label_tag :email, t('.email') %>
+	<%= text_field_tag :email, params[:email], class: "text large required" %>
+
+	<div class="clearfix">&nbsp;</div>
+
+	<%= label_tag :password, t('.password') %>
+	<%= password_field_tag :password, params[:password], class: "text large required" %>
+	<div class="clearfix">&nbsp;</div>
+
+	<p>
+		<%= submit_tag t('.login') %>
+		<%= check_box_tag :remember_me %>
+		<%= label_tag t('.remember_me') %>
+	</p>
+<% end %>

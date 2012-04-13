@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pricelist.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @pricelist.price %>
+</p>
+
+<p>
+  <b>Period:</b>
+  <%= @pricelist.period %>
+</p>
+
+<p>
+  <b>Available for companies:</b>
+  <%= @pricelist.available_for_companies %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @pricelist.status %>
+</p>
+
+<p>
+  <b>Date start:</b>
+  <%= @pricelist.date_start %>
+</p>
+
+<p>
+  <b>Date end:</b>
+  <%= @pricelist.date_end %>
+</p>
+
+
+<%= link_to 'Edit', edit_pricelist_path(@pricelist) %> |
+<%= link_to 'Back', pricelists_path %>

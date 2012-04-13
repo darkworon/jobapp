@@ -1,0 +1,2 @@
+$("span#<%= job.id %>.fav").html('<%= escape_javascript(link_to image_tag("favorite_remove.png", :title => t("search.favorites.remove"), :class => "favico remove", style: "width:25px;height:25px;"), remove_favorite_path(id: job.id), class: "favorite_remove", remote: true) %>');
+//$.flash_notice("Added to favorites.", 1);

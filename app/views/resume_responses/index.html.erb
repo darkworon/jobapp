@@ -1,0 +1,61 @@
+<% if @resume_responses_recieved.count > 0 %>
+<h1>Полученные отклики на резюме</h1>
+<table>
+  <tr>
+    <th>Ваше резюме</th>
+    <th>Вакансия</th>
+	<th></th>
+	<th></th>
+  </tr>
+<% @resume_responses_recieved.each do |resume_response| %>
+<% if resume_response.status == 3 %>
+  <tr class="declined">
+<% elsif resume_response.status == 2 %>
+	<tr class="accepted">
+<% end %>
+    <td><%= link_to resume_response.resume.title, resume_path(resume_response.resume), target: "_blank" %></td>
+    <td><%= link_to resume_response.vacancy.title, vacancy_path(resume_response.vacancy), target: "_blank" %></td>
+	<% if resume_response.status <= 1 %>
+	<td><%= link_to "Принять", accept_resume_response_path(resume_response) %></td>
+	<td><%= link_to "Отклонить", decline_resume_response_path(resume_response) %></td>
+	<% elsif resume_response.status == 2 %>
+	    <td><%= resume_response.translated_status %></td>
+		<td><%= link_to "Отклонить", decline_resume_response_path(resume_response) %></td>
+	<% elsif resume_response.status == 3 %>
+		<td><%= link_to "Принять", accept_resume_response_path(resume_response) %></td>
+		<td><%= resume_response.translated_status %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table><br /><br />
+
+<% end %>
+<% if @resume_responses_sent.count > 0 %>
+<h1>Отправленные отклики на резюме</h1>
+
+<table>
+  <tr>
+    <th>Резюме</th>
+    <th>Ваша вакансия</th>
+    <th>Статус</th>
+	<th></th>
+  </tr>
+
+<% @resume_responses_sent.each do |resume_response| %>
+<% if resume_response.status == 3 %>
+  <tr class="declined">
+<% elsif resume_response.status == 2 %>
+	<tr class="accepted">
+<% end %>
+    <td><%= link_to resume_response.resume.title, resume_path(resume_response.resume), target: "_blank"%></td>
+    <td><%= link_to resume_response.vacancy.title, vacancy_path(resume_response.vacancy), target: "_blank" %></td>
+    <td><%= resume_response.translated_status %></td>
+	<% if !resume_response.viewed_by_sender %>
+	<td><%= link_to "OK", ok_resume_response_path(resume_response), method: :post %></td>
+	<% else %>
+	<td></td>
+	<% end %>
+  </tr>
+<% end %>
+</table><br /><br />
+<% end %>

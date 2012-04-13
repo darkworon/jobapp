@@ -1,0 +1,4 @@
+<li><%= link_to "Создать подписку", new_pricelist_path, class: [sub_active_ca?("pricelists","new"), sub_active_ca?("pricelists","create")]%></li>
+<li><%= link_to "Активные", pricelists_path, class: cp_sub(pricelists_path) %></li>
+<li><%= link_to "Черновики", price_list_drafts_path, class: cp_sub(price_list_drafts_path) %></li>
+<li><%= link_to "Архив", archived_price_lists_path, class: cp_sub(archived_price_lists_path) %></li>

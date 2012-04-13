@@ -1,0 +1,33 @@
+<h1>Listing user_expences</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>User subscription</th>
+    <th>Points expended</th>
+    <th>Service</th>
+    <th>Integer</th>
+    <th>Entry</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_expences.each do |user_expence| %>
+  <tr>
+    <td><%= user_expence.user_id %></td>
+    <td><%= user_expence.user_subscription_id %></td>
+    <td><%= user_expence.points_expended %></td>
+    <td><%= user_expence.service_id %></td>
+    <td><%= user_expence.integer %></td>
+    <td><%= user_expence.entry_id %></td>
+    <td><%= link_to 'Show', user_expence %></td>
+    <td><%= link_to 'Edit', edit_user_expence_path(user_expence) %></td>
+    <td><%= link_to 'Destroy', user_expence, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User expence', new_user_expence_path %>

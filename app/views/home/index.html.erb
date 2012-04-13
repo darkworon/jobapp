@@ -1,0 +1,99 @@
+        <div class="container_12">
+		<% if notice %>
+		<div class="notification success canhide">
+        
+            <p><strong></strong>
+            <%= notice %></p>
+        </div>
+		<% end %>
+        <h2>Tabbed Content Example</h2>		
+        <ul class="tabs">
+            <li><a href="#tab1">Gallery</a></li>
+            <li><a href="#tab2">Form Elements</a></li>
+        </ul>
+    
+    <div class="tab_container">
+        <div id="tab1" class="tab_content">
+            <!-- START IMAGE GALLERY -->
+        </div>
+        <div id="tab2" class="tab_content">
+           <h2>Forms</h2>
+           
+           	<p>
+                 Forms are great for collecting informatoin or simply for use in your web application. 
+                 With Reality Admin, you get stylish form elements ready to use straight out the box. 
+                 They're already skinned, pre-sized adn formatted for you so you can simply get on and use them as you choose.
+         	</p>
+           
+           <form action="" method="post">
+              <!-- RADIO GROUPS -->
+              <p>	
+                  <input type="radio" name="radio" id="RADIO1" value="RADIO1" />
+                  <label for="RADIO1">RADIO ONE</label>
+                  <input type="radio" name="radio" id="RADIO2" value="RADIO2" />
+                  <label for="RADIO2">RADIO TWO</label>
+                  <input type="radio" name="radio" id="RADIO3" value="RADIO3" />
+                  <label for="RADIO3">RADIO THREE</label>
+              </p>
+           
+           
+              <p>
+                  <label>Small Input Box:</label><br />
+                  <input type="text" class="text small" /> 
+                  <span class="valid">This is a validation message</span>
+              </p>
+              
+              
+              
+              <p>
+             	 <label>Medium Input Box:</label><br />
+                 <input type="text" class="text medium" /> 
+                 <span class="error">This is an error message</span>
+              </p>
+              
+              <p>
+                  <label>Large Input Box</label><br />
+                  <input type="text" class="text large" />
+              </p>
+              
+      
+            <!-- CHECKBOXES -->
+            <p>
+                <input type="checkbox" class="checkbox" checked="checked" id="cbdemo1" /> 
+                <label for="cbdemo1">Checkbox label</label> 
+                <input type="checkbox" class="checkbox" id="cbdemo2" />
+                <label for="cbdemo2">Checkbox label</label>
+            
+            <!-- COMBO SELECT BOX -->
+
+            <label for="cbo">Dropdown/Combo Box:</label>
+            
+            <select name="cbo" id="cbo" class="select">
+            
+                <option value="One">One</option>
+                <option value="Two">Two</option>
+                <option value="Three">Three</option>
+                <option value="Four">Four</option>
+                <option value="Five">Five</option>
+            
+            </select>   
+ 
+            </p>
+
+			<p>
+                  <label>Text Area Without Editor:</label><br />
+                  <textarea cols="8" rows="5"></textarea>
+            </p>
+            <p>
+                <label>Text Area with Editor:</label><br />
+                <textarea cols="8" rows="6" class="wysiwyg"></textarea>
+            </p>
+			<p>
+          		<input type="submit" class="submit" value="Button" />
+                <input name="Submit2" type="submit" class="submit" value="Another Button" />
+                <input name="Reset2" type="submit" class="submit special" value="Special Button" />
+       		</p>
+           </form>
+        </div>
+</div>
+</div>

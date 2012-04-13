@@ -1,0 +1,28 @@
+<% resumes_left = @resumes_max - @current_user.resumes.where(status: 1).count %>
+<% if resume.status == 0 %>
+  <tr id="<%= resume.id %>" class="hidden">
+<% else %>
+	<tr id="<%= resume.id %>">
+<% end %>
+    <td><%= link_to resume.title, resume_path(resume), target: :_blank %></td>
+    <td><%= truncate(resume.description, :length => 120) %></td>
+    <td><%= truncate(resume.career, :length => 150) %></td>
+    <td><%= resume.city %></td>
+    <td><div id="<%= resume.id %>" class="salary editable"><%= number_to_currency(resume.salary) %></div></td>
+		<td><div id="<%= resume.id %>" class="priority editable"><%= resume.priority %></div></td>
+		<td><br />
+		<% if resume.status == 0 and resumes_left > 0 %>
+		<%= link_to "Опубликовать", publish_resume_path(resume), remote: true, method: :post %>
+		<% elsif resume.status == 1 %>
+		<%= link_to "Скрыть", hide_resume_path(resume), remote: true, method: :post %>
+		<% else %>
+		<%= link_to "Опубликовать", publish_resume_path(resume), remote: true, method: :post %>
+		<% end %>
+		</td>
+    <td><%= link_to "Создать на основе", new_resume_based_on_path(resume) %><br /><br /><%= link_to 'Редактировать', edit_resume_path(resume), target: :_blank %></td>
+    <td><br /><%= link_to 'Удалить', resume_path(resume), confirm: 'Вы уверены?', method: :delete, remote: true %>
+		</td>
+  </tr>
+	<script type="text/javascript" charset="utf-8">
+
+</script>

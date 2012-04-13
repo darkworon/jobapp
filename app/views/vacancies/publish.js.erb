@@ -1,0 +1,7 @@
+<% if @vacancy.status == 1 %>
+$('tr#<%= @vacancy.id %>').replaceWith('<%= escape_javascript(render @vacancy) %>');
+$('div.vacancies_left_info').html('<%= escape_javascript(render "vacancies_left_info")%>');
+
+<% else %>
+$.flash_error("Превышен лимит опубликованных вакансий.", 5);
+<% end %>

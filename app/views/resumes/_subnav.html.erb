@@ -1,0 +1,3 @@
+<li><%= link_to "Создать резюме", new_resume_path, class: [sub_active_ca?("resumes","new"), sub_active_ca?("resumes","create")]%></li>
+<li><%= link_to "Мои резюме", resumes_path, class: cp_sub(resumes_path) %></li>
+<li><%= link_to "Избранные резюме", favorite_resumes_path, class: ["sub_nav_last", cp_sub(favorite_resumes_path)] %></li>

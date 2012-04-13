@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @banking_detail.user_id %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @banking_detail.company_id %>
+</p>
+
+<p>
+  <b>Bank name:</b>
+  <%= @banking_detail.bank_name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @banking_detail.city %>
+</p>
+
+<p>
+  <b>Current account:</b>
+  <%= @banking_detail.current_account %>
+</p>
+
+<p>
+  <b>Correspondent account:</b>
+  <%= @banking_detail.correspondent_account %>
+</p>
+
+<p>
+  <b>Bik:</b>
+  <%= @banking_detail.bik %>
+</p>
+
+
+<%= link_to 'Edit', edit_banking_detail_path(@banking_detail) %> |
+<%= link_to 'Back', banking_details_path %>

@@ -1,0 +1,15 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1><%= t('.hello') %> <%= @current_user.name %>!</h1>
+
+
+Current locale: <%= params[:locale] %>
+<% if request.path.include?("/#{params[:locale]}/") %>
+	<%= link_to "Русский", request.path.gsub("/#{params[:locale]}/", "/ru/") %> | 
+	<%= link_to "English", request.path.gsub("/#{params[:locale]}/", "/en/") %>
+<% else %>
+	<%= link_to "Русский", "/ru" + request.path %>
+	<%= link_to "English", "/en" + request.path %>
+<% end %>

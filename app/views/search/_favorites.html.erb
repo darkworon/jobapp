@@ -1,0 +1,9 @@
+<% if user %>
+<% if user.job_already_favorited?(job) %>
+<%= link_to image_tag("favorite_remove.png", :title => t('.remove'), :class => "favico remove", style: "width:25px;height:25px;"), remove_favorite_path(id: job), class: "favorite_remove", remote: true %>
+<% elsif !user.job_already_favorited?(job) and user.can_add_to_favorites?(job) %>
+<%= link_to image_tag("favorite_add.png", :title => t('.add'), :class => "favico add", style: "width:25px;height:25px;"), add_favorite_path(id: job), class: "favorite_add", remote: true %>
+<% elsif !user.can_add_to_favorites?(job) %>
+<span class="search_my_item"><%= t ".my" %></span>
+<% end %>
+<% end %>

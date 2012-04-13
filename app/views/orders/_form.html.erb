@@ -1,0 +1,17 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<%= f.select :pricelist_id, options_for_select(@pricelists.collect {|p| ["#{p.name} - #{p.price} р.", p.id]}), prompt: "Выберите подписку..." %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

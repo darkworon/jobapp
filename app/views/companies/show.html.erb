@@ -1,0 +1,101 @@
+<style type="text/css" media="screen">
+
+.main_container_div p, .main_container_div p span {
+	font-size:14px;
+}
+p.career {
+}
+h1 {
+	font-size:300%;
+	margin-bottom:30px;
+}
+span.header {
+	font-family: Tahoma, Geneva, sans-serif; margin-top: 10px; margin-bottom: 20px; color: #666;
+	font-weight:bold;
+	margin-bottom:20px;
+	margin-top:25px;
+	font-size: 17px; color: #666; text-transform: uppercase;
+	display:block;
+}
+span {
+	display:block;
+	margin-top:7px;
+	margin-bottom:7px;
+}
+p.actions {
+	margin-top:30px;
+}
+
+</style>
+<h1><%= @company.short_name %></h1>
+<% if @company.owner == @current_user %>
+
+<p>
+	<span class="header">Официальное название</span>
+	<%= @company.official_name %>
+</p>
+<p class="requisites">
+  <span class="header">Реквизиты</span>
+  <span>ИНН: <%= @company.inn %></span>
+	<span>КПП: <%= @company.kpp %></span>
+	<% unless @company.ogrn.blank? %>
+	<span>ОГРН: <%= @company.ogrn %></span>
+	<% end %>
+</p>
+<p>
+	<span class="header">Юридический адресс</span>
+	<%= @company.legal_address %>
+</p>
+<% unless @company.address.blank? %>
+<p>
+	<span class="header">Физический адресс</span>
+	<%= @company.address %>
+</p>
+<% end %>
+
+
+
+<p class="contacts">
+  <span class="header">Контакты</span>
+	<% unless @company.email_1.blank? %>
+	<span>Email: <%= @company.email_1 %><% unless @company.email_2.blank? %>, <%= @company.email_2 %><% end %><%= image_tag "email.png", :title => "Email", :class => "email", style: "width:21px; height:22px;position:absolute;margin-left:5px;margin-top:-1px;" %></span>
+	<% end %>
+  <span>Телефоны: <%= @company.phone_1 %><% unless @company.phone_2.blank? %>, <%= @company.phone_2 %><% end %><%= image_tag "phone_number.png", :title => "Телефон", :class => "phone_number", style: "width:16px; height:16px;position:absolute;margin-left:5px" %></span>
+	<% unless @company.website.blank? %>
+	<span>Вебсайт: <a href="http://<%= @company.website %>">http://<%= @company.website %></a></span>
+	<% end %>
+</p>
+<% unless @company.description.blank? %>
+<p>
+  <span class="header">Описание</span>
+  <%= simple_format(@company.description, :class => 'career') %>
+</p>
+<% end %>
+<p class="actions">
+<%= link_to "Редактировать", edit_company_path(@company), class: "submit" %>
+</p>
+
+
+<% else %>
+<p>
+	<span class="header">Официальное название</span>
+	<%= @company.official_name %>
+</p>
+<p class="contacts">
+  <span class="header">Контакты</span>
+	<% unless @company.email_1.blank? %>
+	<span>Email: <%= @company.email_1 %><% unless @company.email_2.blank? %>, <%= @company.email_2 %><% end %><%= image_tag "email.png", :title => "Email", :class => "email", style: "width:21px; height:22px;position:absolute;margin-left:5px;margin-top:-1px;" %></span>
+	<% end %>
+  <span>Телефоны: <%= @company.phone_1 %><% unless @company.phone_2.blank? %>, <%= @company.phone_2 %><% end %><%= image_tag "phone_number.png", :title => "Телефон", :class => "phone_number", style: "width:16px; height:16px;position:absolute;margin-left:5px" %></span>
+	<% unless @company.website.blank? %>
+	<span>Вебсайт: <a href="http://<%= @company.website %>">http://<%= @company.website %></a></span>
+	<% end %>
+</p>
+<% unless @company.description.blank? %>
+<p>
+  <span class="header">Описание</span>
+  <%= simple_format(@company.description, :class => 'career') %>
+</p>
+<% end %>
+<% end %>
+

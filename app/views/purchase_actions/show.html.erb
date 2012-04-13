@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Order:</b>
+  <%= @purchase_action.order_id %>
+</p>
+
+<p>
+  <b>Shedule date:</b>
+  <%= @purchase_action.shedule_date %>
+</p>
+
+<p>
+  <b>Entry uin:</b>
+  <%= @purchase_action.entry_uin %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @purchase_action.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_purchase_action_path(@purchase_action) %> |
+<%= link_to 'Back', purchase_actions_path %>

@@ -1,0 +1,26 @@
+<% vacancies_left = @vacancies_max - @current_user.vacancies.where(status: 1).count %>
+<% if vacancy.status == 0 %>
+<tr id="<%= vacancy.id %>" class="hidden">
+<% elsif vacancy.status == -2 %>
+<tr id="<%= vacancy.id %>" class="banned">
+<% else %>
+	<tr id="<%= vacancy.id %>">
+<% end %>
+    <td><%= link_to vacancy.title, vacancy_path(vacancy), target: :_blank %></td>
+    <td><%= truncate(vacancy.description, :length => 120) %></td>
+    <td><%= truncate(vacancy.career, :length => 150) %></td>
+    <td><%= vacancy.city %></td>
+    <td><div id="<%= vacancy.id %>" class="salary editable"><%= number_to_currency(vacancy.salary) %></div></td>
+		<td><div id="<%= vacancy.id %>" class="priority editable"><%= vacancy.priority %></div></td>
+		<td><br />
+		<% if vacancy.status == 0 %>
+		<%= link_to t('.publish'), publish_vacancy_path(vacancy), remote: true, method: :post %>
+		<% elsif vacancy.status == 1 %>
+		<%= link_to t('.unpublish'), hide_vacancy_path(vacancy), remote: true, method: :post %>
+		<% elsif vacancy.status == -2 %>
+		Забанена
+		<% end %>
+		</td>
+    <td><%= link_to t('.create_based_on'), new_vacancy_based_on_path(vacancy) %><br /><br /><%= link_to t('.edit'), edit_vacancy_path(vacancy), target: :_blank %></td>
+    <td><br /><%= link_to t('.delete'), vacancy_path(vacancy), confirm: t('global.are_you_sure'), method: :delete, remote: true %></td>
+  </tr>

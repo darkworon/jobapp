@@ -1,0 +1,6 @@
+<% if @resume.status == 1 %>
+$('tr#<%= @resume.id %>').replaceWith('<%= escape_javascript(render @resume) %>');
+$('div.resumes_left_info').html('<%= escape_javascript(render "resumes_left_info")%>');
+<% else %>
+$.flash_error("Превышен лимит опубликованных резюме.", 5);
+<% end %>

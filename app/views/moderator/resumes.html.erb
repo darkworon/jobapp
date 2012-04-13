@@ -1,0 +1,27 @@
+<h1>All resumes</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Career</th>
+    <th>City</th>
+    <th>Salary</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @resumes.each do |resume| %>
+  <tr>
+    <td><%= link_to resume.title, resume_path(resume), target: "_blank" %></td>
+    <td><%= truncate(resume.description, :length => 120) %></td>
+    <td><%= truncate(resume.career, :length => 150) %></td>
+    <td><%= resume.city %></td>
+    <td><%= resume.salary %></td>
+    <td><%= link_to 'Edit', edit_resume_path(resume), target: "_blank" %></td>
+    <td><%= link_to 'X', resume_path(resume), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @resumes %>
+<br />

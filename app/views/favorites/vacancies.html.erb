@@ -1,0 +1,33 @@
+<h1>Избранные вакансии</h1>
+<% if @vacancies.count > 0 %>
+<table>
+  <tr>
+		<th></th>
+    <th>Наименование</th>
+    <th>Описание</th>
+    <th>Требования</th>
+    <th>Город</th>
+    <th>Заработная плата</th>
+		<th></th>
+    <th></th>
+  </tr>
+<%= form_tag do %>
+		<% @vacancies.each do |vacancy| %>
+		<tr id="<%= vacancy.id %>">
+						<td><%= check_box_tag "vacancies_sel[]", vacancy.id %></td>
+	    <td><%= link_to vacancy.title, vacancy_path(vacancy) %></td>
+	    <td><%= truncate(vacancy.description, :length => 120) %></td>
+	    <td><%= truncate(vacancy.career, :length => 150) %></td>
+	    <td><%= vacancy.city %></td>
+	    <td><%= number_to_currency(vacancy.salary) %></td>
+	    <td><%= link_to "Создать на основе", new_vacancy_based_on_path(vacancy) %><br /></td>
+	    <td><br /><%= link_to image_tag("favorite_remove.png", :title => "Remove from Favorites", :class => "favico remove", style: "width:25px;height:25px;"), remove_favorite_path(id: vacancy), class: "favorite_remove", remote: true %></td>
+	  </tr>
+<% end %>
+</table><br />
+Email: <%= text_field_tag :email, "", style: "width:200px;" %> <%= submit_tag "Порекомендовать" %>
+<% end %>
+<br />
+<% else %>
+<p>Вы не добавили в избранное ни одну вакансию</p>
+<% end %>

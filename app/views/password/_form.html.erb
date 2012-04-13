@@ -1,0 +1,11 @@
+<%= form_tag recover_password_path(back_url: params[:back_url]), :class => "loginform", :id => "loginform" do %>
+	<div id="logo"><h1><span>Восстановление учетной записи</span></h1></div>
+	<p>Enter your account email.</p>
+	<%= label_tag :email, "Email:" %>
+	<%= text_field_tag :email, params[:email], class: "text large required" %>
+
+	<div class="clearfix">&nbsp;</div>
+	<p>
+		<%= submit_tag "Восстановить", class: "submit" %>
+	</p>
+<% end %>

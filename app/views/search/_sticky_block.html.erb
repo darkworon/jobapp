@@ -1,0 +1,35 @@
+<div class="sticky_block">
+<span class="sub">
+<%= link_to t('.new_vacancy'), new_vacancy_path, class: [sub_active_ca?("vacancies","new"), sub_active_ca?("vacancies","create")], target: :blank %>
+<%= link_to t(".new_resume"), new_resume_path, class: [sub_active_ca?("resumes","new"), sub_active_ca?("resumes","create")], target: :blank %>
+<%= link_to t(".new_company"), new_company_path, class: sub_active_ca?("companies", "new"), target: :blank  %>
+</span>
+<span class="sub">
+<%= link_to t(".my_vacancies"), vacancies_path, class: cp_sub(vacancies_path), target: :blank  %>
+<%= link_to t(".my_resumes"), vacancies_path, class: cp_sub(vacancies_path), target: :blank  %>
+<%= link_to t(".my_companies"), vacancies_path, class: cp_sub(vacancies_path), target: :blank  %>
+</span>
+<span class="sub">
+	<%= link_to t(".search_vacancy"), search_vacancy_path, remote: true %>
+	<%= link_to t(".search_resume"), search_resume_path, remote: true %>
+</span>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	var box = $('.sticky_block'); // float-fixed block
+
+  var top = box.offset().top - parseFloat(box.css('marginTop').replace(/auto/, 220));
+  $(window).scroll(function(){
+      var windowpos = $(window).scrollTop();
+      if(windowpos < top) {
+          box.css('position', 'absolute');
+					box.css('visibility', 'hidden');
+					box.css('top', 220);
+      } else {
+				  box.css('visibility', 'visible');
+          box.css('position', 'fixed');
+          box.css('top', 10);
+      }
+  });
+});
+</script>
+</div>

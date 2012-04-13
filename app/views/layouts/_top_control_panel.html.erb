@@ -1,0 +1,20 @@
+<!-- start control panel -->
+        	<ul>
+			<% if @current_user %>
+    		<li><p><%= (t '.hello_username', username: html_escape(@current_user.name)).html_safe %> <% if @current_user.status != 1 %>(<%= @current_user.text_status %>)<% end %></p></li>
+			<% if @current_user.status == 3 %>
+			<li><%= link_to t ".admin", admin_path, class: "first" %></li>
+			<% end %>
+			<% if @current_user.status == 2 %>
+			<li><%= link_to t ".moderator", moderator_path, class: "first" %></li>
+			<% end %>
+			<li><%= link_to t(".new_events", count: @current_user.unreaded_recieved_resume_responses.count + @current_user.unreaded_recieved_vacancy_responses.count + @current_user.unreaded_sent_resume_responses.count + @current_user.unreaded_sent_vacancy_responses.count), responses_path %></li>
+
+			<li><%= link_to t(".logout"), logout_path, class: "last", remote: true %></li>
+            <% else %>
+			<li><p><%= t ".not_logged_in" %></p></li>
+			<li><%= link_to t(".register"), register_path, class: "first", :rel => 'nofollow' %></li>
+			<li><%= link_to t(".login"), login_path, class: "top_login_btn last", remote: true, :rel => 'nofollow' %></li>
+			<% end %>
+            </ul>
+<!-- end control panel -->

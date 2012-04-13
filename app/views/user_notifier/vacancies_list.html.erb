@@ -1,0 +1,28 @@
+<h2>Добрый день!</h2>
+<h3>Пользователь <%= @sender.full_name %> рекомендовал вам следующие вакансии:</h3><br />
+<table>
+  <tr>
+    <th>Наименование</th>
+    <th>Условия</th>
+    <th>Требования</th>
+    <th>Город</th>
+    <th>Зарплата</th>
+		<th></th>
+
+  </tr>
+<% @vacancies.each do |vacancy| %>
+  <tr id="<%= vacancy.id %>">
+    <td><%= link_to vacancy.title, vacancy_url(id: vacancy.id) %></td>
+    <td><%= truncate(vacancy.description, :length => 120) %></td>
+    <td><%= truncate(vacancy.career, :length => 150) %></td>
+    <td><%= vacancy.city %></td>
+    <td><%= number_to_currency(vacancy.salary) %></td>
+		<td><%= link_to "Создать на основе", new_vacancy_based_on_url(id: vacancy.id), target: "_blank" %></td>
+  </tr>
+<% end %>
+
+</table>
+<br />
+<p>
+С уважением, <%= link_to "Job4Fun.Ru", home_url %>.
+</p>

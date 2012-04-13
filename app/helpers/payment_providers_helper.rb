@@ -1,0 +1,2 @@
+module PaymentProvidersHelper
+end

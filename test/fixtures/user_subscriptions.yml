@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  pricelist_id: 1
+  payment_id: 1
+  points_remain: 1
+  date_start: 2012-03-28 22:02:59
+
+two:
+  user_id: 1
+  pricelist_id: 1
+  payment_id: 1
+  points_remain: 1
+  date_start: 2012-03-28 22:02:59

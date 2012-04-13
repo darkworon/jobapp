@@ -1,0 +1,18 @@
+<% unless @vacancies.empty? %>
+			<% @vacancies.each do |vacancy| %>
+		  	<p class="search_item">
+		    	<h2 class="search_item_header"><%= link_to vacancy.title, vacancy_path(vacancy), target: :_blank %> (<%= number_to_currency(vacancy.salary) %>)</h2>
+		    	<b>Требования:</b> <%= truncate(vacancy.career, :length => 300) %><br />
+					<b>Условия работы:</b> <%= truncate(vacancy.description, :length => 300) %><br />
+		    	<b>Город:</b> <%= vacancy.city %><br />
+		    	<b>Заработная плата:</b> <%= number_to_currency(vacancy.salary) %><br />
+					<b>Компания:</b> <%= link_to vacancy.company.short_name, vacancy.company %><br /><br />
+					<span class="search_item_date_info">Опубликовано <%= time_ago_in_words(vacancy.created_at) %> назад</span>
+			</p>
+			<% end %>
+
+			<%= will_paginate @vacancies, id: "pagination", class: "search_pagination"  %>
+		<% end %>
+	</div>
+	</div>
+</div>

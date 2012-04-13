@@ -1,0 +1,26 @@
+<h1>Мои компании</h1>
+
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Телефон</th>
+    <th>Email</th>
+    <th>ИНН</th>
+    <th>Веб-сайт</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @companies.each do |company| %>
+  <tr>
+    <td><%= link_to company.short_name, company, target: :_blank %></td>
+    <td><%= company.phone_1 %></td>
+    <td><%= company.email_1 %></td>
+    <td><%= company.inn %></td>
+    <td><%= company.website %></td>
+    <td><%= link_to 'Редактирование', edit_company_path(company), target: :_blank %></td>
+    <td><%= link_to 'Удалить', company, confirm: 'Вы уверены?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

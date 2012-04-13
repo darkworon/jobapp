@@ -1,0 +1,18 @@
+<% unless @resumes.empty? %>
+	<% @resumes.each do |resume| %>
+  	<p class="search_item">
+    	<h2 class="search_item_header"><%= link_to resume.title, resume_path(resume), target: :_blank %> (<%= number_to_currency(resume.salary) %>)</h2>
+    	<b>Карьера:</b> <%= truncate(resume.career, :length => 300) %><br />
+			<b>Навыки и знания:</b> <%= truncate(resume.description, :length => 300) %><br />
+    	<b>Город:</b> <%= resume.city %><br />
+    	<b>Заработная плата:</b> <%= number_to_currency(resume.salary) %><br /><br />
+			<span class="search_item_date_info">Опубликовано <%= time_ago_in_words(resume.created_at) %> назад</span>
+	</p>
+	<% end %>
+	
+	<%= will_paginate @resumes, id: "pagination", class: "search_pagination"  %>
+<% end %>
+</div>
+
+</div>
+</div>

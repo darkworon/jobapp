@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  user_subscription_id: 1
+  points_expended: 1
+  service_id: MyString
+  integer: MyString
+  entry_id: 1
+
+two:
+  user_id: 1
+  user_subscription_id: 1
+  points_expended: 1
+  service_id: MyString
+  integer: MyString
+  entry_id: 1

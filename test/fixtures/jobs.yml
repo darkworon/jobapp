@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  career: MyText
+  city: MyString
+  name: MyString
+  phone: MyString
+  email: MyString
+  salary: 1
+  birthdate: 2012-03-19
+  experience_period: 1
+
+two:
+  title: MyString
+  description: MyText
+  career: MyText
+  city: MyString
+  name: MyString
+  phone: MyString
+  email: MyString
+  salary: 1
+  birthdate: 2012-03-19
+  experience_period: 1

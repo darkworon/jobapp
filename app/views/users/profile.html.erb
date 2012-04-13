@@ -1,0 +1,41 @@
+	<div id="tab2" class="tab_content">
+		<h2>Мой профиль</h2>
+		<%= form_for @user, url: update_profile_path do |f| %>
+		  <% if @user.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+		      <ul>
+		      <% @user.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    
+		  <% end %>
+		  
+		 <p><%= f.label :firstname, "Имя" %><br />
+		    <%= f.text_field :firstname, class: "text medium" %></p>
+		  
+		  
+		    <p><%= f.label :lastname, "Фамилия" %><br />
+		    <%= f.text_field :lastname, class: "text medium" %></p><br />
+		
+			<p><%= f.label :city, "Город" %><br />
+		    <%= f.text_field :city, class: "text low" %></p>
+		
+			<p><%= f.label :phone, "Телефон" %><br />
+		    <%= f.text_field :phone, class: "text medium", style: "width:200px;" %></p><br />
+		  
+			<p><%= f.label :birthdate, "Дата рождения" %><br />
+				<%= f.text_field :birthdate, class: "text low", style: "width:100px;" %></p>
+				
+		  <p><%= f.label :time_zone, "Часовой пояс" %><br />
+				<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, {}, { id: "cbo", class: "select" } %></p><br />
+		    <p><%= f.label :password, "Новый пароль" %><br />
+		    <%= f.password_field :password, class: "text low" %></p>
+		  
+		   <p><%= f.submit "Сохранить", class: "submit" %></p>
+		  
+		<% end %>
+	
+

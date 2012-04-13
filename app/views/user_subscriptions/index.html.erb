@@ -1,0 +1,31 @@
+<h1>Listing user_subscriptions</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Pricelist</th>
+    <th>Payment</th>
+    <th>Points remain</th>
+    <th>Date start</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_subscriptions.each do |user_subscription| %>
+  <tr>
+    <td><%= user_subscription.user_id %></td>
+    <td><%= user_subscription.pricelist_id %></td>
+    <td><%= user_subscription.payment_id %></td>
+    <td><%= user_subscription.points_remain %></td>
+    <td><%= user_subscription.date_start %></td>
+    <td><%= link_to 'Show', user_subscription %></td>
+    <td><%= link_to 'Edit', edit_user_subscription_path(user_subscription) %></td>
+    <td><%= link_to 'Destroy', user_subscription, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User subscription', new_user_subscription_path %>

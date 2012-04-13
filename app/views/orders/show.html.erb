@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <b>Pricelist:</b>
+  <%= @order.pricelist_id %>
+</p>
+
+<p>
+  <b>Sum:</b>
+  <%= @order.sum %>
+</p>
+
+<p>
+  <b>Payment provider:</b>
+  <%= @order.payment_provider_id %>
+</p>
+
+<p>
+  <b>Transaction:</b>
+  <%= @order.transaction_id %>
+</p>
+
+<p>
+  <b>Transaction date:</b>
+  <%= @order.transaction_date %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%= @order.due_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @order.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

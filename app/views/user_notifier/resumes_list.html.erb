@@ -1,0 +1,29 @@
+<h2>Добрый день!</h2>
+<h3>Пользователь <%= @sender.full_name %> рекомендовал вам следующие резюме:</h3><br />
+<table>
+  <tr>
+    <th>Наименование</th>
+    <th>Навыки</th>
+    <th>Карьера</th>
+    <th>Город</th>
+    <th>Заработная плата</th>
+		<th></th>
+
+  </tr>
+<% @resumes.each do |resume| %>
+  <tr id="<%= resume.id %>">
+    <td><%= link_to resume.title, resume_url(id: resume.id) %></td>
+    <td><%= truncate(resume.description, :length => 120) %></td>
+    <td><%= truncate(resume.career, :length => 150) %></td>
+    <td><%= resume.city %></td>
+    <td><%= number_to_currency(resume.salary) %></td>
+		<td><%= link_to "Создать на основе", new_resume_based_on_url(id: resume.id), target: "_blank" %></td>
+  </tr>
+<% end %>
+
+</table>
+<br />
+
+<p>
+С уважением, <%= link_to "Job4Fun.Ru", home_url %>.
+</p>

@@ -1,0 +1,3 @@
+<li><%= link_to t('.create_new_vacancy'), new_vacancy_path, class: [sub_active_ca?("vacancies","new"), sub_active_ca?("vacancies","create")]%></li>
+<li><%= link_to t('.my_vacancies'), vacancies_path, class: cp_sub(vacancies_path) %></li>
+<li><%= link_to t('.favorite_vacancies'), favorite_vacancies_path, class: ["sub_nav_last", cp_sub(favorite_vacancies_path)] %></li>

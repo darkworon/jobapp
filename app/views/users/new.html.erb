@@ -1,0 +1,45 @@
+    <% if notice %>
+	<div class="notification failure canhide" style="border-left:0; border-right:0;text-align:center;font-size:120%;border-radius:0">
+        <p><strong>Error: </strong><%= notice %></p>                
+    </div>
+	<% end %>
+
+
+<% if @user.errors.any? %>
+	<div class="notification failure canhide" style="border-left:0; border-right:0;text-align:center;font-size:120%;border-radius:0;margin-top:20px;">
+	    <p style="margin-top:-15px;">
+		<strong><%=raw t('errors.template.header', count: @user.errors.count,
+				model: t('activerecord.models.job')) %>:<br /></strong></p>
+				<% @user.errors.full_messages.each do |msg| %>
+			        <p style="line-height: 20px;"><%= msg %></p>
+			      <% end %>
+		                
+	</div>
+<% end %>
+<!-- END LOGO -->
+<div id="admin_wrapper">
+<%= form_for @user, url: { :action => :create, :back_url => params[:back_url] } do |f| %>
+
+<div id="logo">
+	<h1><span><%= t('.header') %></span></h1></div>
+<p><%= t('.legend')%></p>
+
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "text large required" %>
+<div class="clearfix">&nbsp;</div>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "text large required" %>
+<div class="clearfix">&nbsp;</div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "text large required" %>
+<div class="clearfix">&nbsp;</div>
+	<%= recaptcha_tags %>
+	<p>
+    <%= f.submit t(".register") %>
+</p>
+<p>
+<%= link_to t('.login'), login_path(:back_url => params[:back_url]) %><%= t('.if_you_already_registered')%>
+</p>
+  </div>
+<% end %>
+    </div><!-- end admin wrapper -->

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vacancy_id: 1
+  resume_id: 1
+  sender_id: 1
+  recipient_id: 1
+  status: 1
+
+two:
+  vacancy_id: 1
+  resume_id: 1
+  sender_id: 1
+  recipient_id: 1
+  status: 1

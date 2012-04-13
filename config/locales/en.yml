@@ -1,0 +1,577 @@
+en:
+  global:
+    are_you_sure: Are you sure?
+    ok: OK
+    cancel: Cancel
+    saving: Saving...
+  users:
+    new:
+      title: Registration
+      register: Registration
+      header: Registration
+      legend: Please, fill in the form.
+      login: Login
+      if_you_already_registered: ", if you already registered."
+  vacancies_found:
+    one: "Found %{count} vacancy"
+    few: "Found %{count} vacancies"
+    many: "Found %{count} vacancies"
+    other: "Found %{count} vacancies"
+  resumes_found:
+    one: "Found %{count} resume"
+    few: "Found %{count} resumes"
+    many: "Found %{count} resumes"
+    other: "Found %{count} resumes"
+  will_paginate:
+    previous_label: "&#8592; Back"
+    next_label: "Forward &#8594;"
+    page_gap: "&hellip;"
+  order:
+    statuses:
+      '-1': "Not paid"
+      '0': 'Waiting for Payment'
+      '1': 'Active'
+      '2': 'Complete'
+      '3': 'Incomplete'
+  pricelist:
+    entry_types:
+      '1': "Vacancy Up"
+      '2': "Resume Up"
+      '3': "More Vacancies"
+      '4': "More Resumes"
+  flash:
+    please_log_in: "Please login."
+    invalid_combination: "Wrong Email or Password."
+    logged_in_as: "You are logged as %{email}."
+    already_logged_in_as: "You are already loggead as %{email}."
+    logged_out: "You logged out."
+  sessions:
+    new:
+      forgot_password: Forgot your password?
+      recover: Recover
+      your_account: your account.
+      register: Register
+      if_you_dont_yet: " if you don't registered yet."
+      title: Login
+      log_in_legend: 'Login'
+      email: Email
+      password: Password
+      submit: 'Login'
+      dont_have_acc_yet: "Not Registered?"
+      register: Register
+      now: now!
+    form:
+      legend: "Please, fill in the form."
+      email: "Email"
+      password: "Password"
+      login: Login
+      remember_me: Remember me
+  admin:
+    index:
+      hello: 'Hi,'
+      logout: 'Logout'
+  home:
+    index:
+      page_title: Home
+      welcome_text: Welcome to our portal!
+      create_new_job: Create New Job
+  resumes:
+    subnav:
+      create_new_resume: Create new resume
+  vacancies:
+    index:
+      page_title: My Vacancies
+      header: My Vacancies
+      title: Title
+      conditions: Conditions
+      requirements: Requirements
+      city: City
+      salary: Salary
+      priority: Priority
+    vacancy:
+      publish: Publish
+      unpublish: Unpublish
+      create_based_on: Create based on
+      edit: Edit
+      delete: Delete
+    vacancies_left_info:
+      click_to_edit: Click to edit...
+      you_can_publish:
+        one: "You can publish %{count} more vacancy."
+        other: "You can publish %{count} more vacancies."
+      limit_exceeded: "Limit of published vacancies exceeded. Please, buy subscription to publish more vacancies."
+    subnav:
+      create_new_vacancy: Create new vacancy
+      my_vacancies: My Vacancies
+      favorite_vacancies: Favorite Vacancies
+  search:
+    nothing_found: Nothing has been found.
+    found: found
+    sticky_block:
+      new_vacancy: New vacancy
+      new_resume: New resume
+      new_company: New company
+      
+      my_vacancies: My vacancies
+      my_resumes: My resumes
+      my_companies: My companies
+      
+      search_vacancy: Search Vacancy
+      search_resume: Search Resume
+    favorites:
+      add: Add to favorites
+      remove: Remove from favorites
+      my: "It's my"
+    resume:
+      site_title: "Resume search"
+      loading: Loading...
+      page: page
+      all: All resumes
+      published: Published
+      ago: ago.
+      tab_title: Search Resume
+      header: Resume search
+      button: Search
+    vacancy:
+      site_title: "Vacancy search"
+      loading: Loading...
+      requirements: Requirements
+      conditions: Work conditions
+      salary: Salary
+      city: City
+      company: Company
+      published: Published
+      ago: ago.
+      page: page
+      all: All vacancies
+      tab_title: Search Vacancy
+      button: Search
+      header: Vacancy search
+  layouts:
+    application:
+      title: Job search
+      main: "Main"
+      vacancies: "Vacancies"
+      resumes: "Resumes"
+      companies: "Companies"
+      profile: "Profile"
+    top_control_panel:
+      hello_username: "Hello, <strong>%{username}</strong>!"
+      select_language: 'Select Language:'
+      new_events:
+        zero: "No new events"
+        one: "%{count} new event"
+        other: "%{count} new events"
+      register: Register
+      login: Log In
+      logout: Log Out
+      not_logged_in: You're not logged in.
+  activerecord:
+    models:
+      user: User
+      job: "Job"
+      vacancy: "Vacancy"
+      resume: "Resume"
+      company: "Company"
+    attributes:
+      vacancy_response:
+        resume: Resume
+      resume_response:
+        vacancy: Vacancy
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Confirm Password
+        submit:
+          create: Register
+      company:
+        official_name: "Official Name"
+        short_name: "Short Name"
+        address: "Office Address"
+        legal_address: "Legal Address"
+        phone_1: Phone
+        phone_2: Add. phone
+        email_1: Email
+        email_2: Add. email
+        inn: INN
+        kpp: KPP
+        ogrn: OGRN
+        website: Website
+        description: Description
+      vacancy:
+        description: Conditions
+        career: Requirements for candidates
+      resume:
+        description: Skills
+        career: Career
+        sex: Sex
+        birthdate: Birthdate
+      job:
+        type_of_job: Job Type
+        education: Education
+        title: Title
+        description: Description
+        career: Requirements
+        sex: Sex
+        min_age: Min Age
+        max_age: Max Age
+        age: Age
+        entry_type: Entry Type
+        city: City
+        name: Name
+        phone: Phone
+        email: E-mail
+        company: Company
+        salary: Salary
+        birthdate: Birthdate
+        experience_period: Experience
+    errors:
+      models:
+        vacancy_response:
+          attributes:
+            resume:
+              blank: must be selected
+        resume_response:
+          attributes:
+            vacancy:
+              blank: must be selected
+        resume:
+          attributes:
+            email:
+              invalid: invalid
+            birthdate:
+              not_a_date: must be in format dd.mm.yyyy
+            experience_period:
+              blank: must be selected
+            company:
+              blank: must be selected
+            sex:
+              blank: must be selected
+            type_of_job:
+              blank: must be selected
+            education:
+              blank: must be selected
+        vacancy:
+          attributes:
+            experience_period:
+              blank: must be selected
+            company:
+              blank: must be selected
+            sex:
+              blank: must be selected
+            type_of_job:
+              blank: must be selected
+            education:
+              blank: must be selected
+        job:
+            entry_type:
+              must_be_selected: must be selected
+      
+      
+  jobs:
+    form:
+      title: Title
+      description: Description
+      career: Requirements for candidates
+      entry_type: Type (vacancy or resume)
+      city: City
+      name: Name
+      phone: Phone
+      email: E-Mail
+      salary: Salary
+      birthdate: Birthdate
+      experience_period: Experience
+      submit: Create
+    new:
+      header: Create New Job
+    messages:
+      must_be_selected: must be selected
+            
+  job_entry_types:
+        '1': 'Vacancy'
+        '2': 'Resume'
+  types_of_job:
+        '1': 'Full Employment'
+        '2': 'Shift Work'
+        '3': 'Free schedule'
+        '4': 'Part-time Work'
+        '5': 'Remote Job'
+        '6': 'Freelance'
+  educations:
+        '1': 'Неполное среднее'
+        '2': 'Среднее'
+        '3': 'Среднее специальное'
+        '4': 'Неполное высшее'
+        '5': 'Высшее'
+  vacancy:
+      sexes:
+          '0': 'Not Important'
+          '1': 'Man'
+          '2': 'Woman'
+      experience_periods:
+          '0': 'No experience'
+          '1': '1 year'
+          '2': '2 years'
+          '3': '3 years'
+          '4': '4 years'
+          '5': '5 years'
+          '6': '6 years and more'
+  response:
+      statuses:
+          '0': "Not Read"
+          '1': "Read, No Answer"
+          '2': "Accepted"
+          '3': "Declined"
+  resume:
+      sexes:
+          '1': 'Man'
+          '2': 'Woman'
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - June
+    - July
+    - Aug
+    - Nov
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - sunday
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    formats:
+      default: '%d.%m.%Y'
+      long: '%d %B %Y'
+      short: '%d %b'
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+      - :day
+      - :month
+      - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        few: about %{count} hours
+        many: about %{count} hours
+        one: about %{count} hour
+        other: about %{count} hours
+      about_x_months:
+        few: about %{count} monthes
+        many: about %{count} monthes
+        one: about %{count} month
+        other: about %{count} monthes
+      about_x_years:
+        few: about %{count} years
+        many: about %{count} years
+        one: about %{count} year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        few: almost %{count} years
+        many: almost %{count} years
+        other: almost %{count} years
+      half_a_minute: less a minute
+      less_than_x_minutes:
+        few: меньше %{count} minutes
+        many: меньше %{count} minutes
+        one: меньше %{count} minute
+        other: меньше %{count} minutes
+      less_than_x_seconds:
+        few: less then %{count} seconds
+        many: less then %{count} second
+        one: less then %{count} second
+        other: less then %{count} seconds
+      over_x_years:
+        few: over %{count} years
+        many: over %{count} years
+        one: over %{count} year
+        other: over %{count} years
+      x_days:
+        few: ! '%{count} days'
+        many: ! '%{count} days'
+        one: ! '%{count} day'
+        other: ! '%{count} days'
+      x_minutes:
+        few: ! '%{count} minutes'
+        many: ! '%{count} minutes'
+        one: ! '%{count} minute'
+        other: ! '%{count} minutes'
+      x_months:
+        few: ! '%{count} monthes'
+        many: ! '%{count} monthes'
+        one: ! '%{count} month'
+        other: ! '%{count} monthes'
+      x_seconds:
+        few: ! '%{count} seconds'
+        many: ! '%{count} seconds'
+        one: ! '%{count} second'
+        other: ! '%{count} seconds'
+    prompts:
+      day: Day
+      hour: Hours
+      minute: Minutes
+      month: Month
+      second: Seconds
+      year: Year
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: "- field cannot be blank or empty"
+      confirmation: do not correspond to confirmation
+      empty: field cannot be blank or empty
+      equal_to: may be only equal to %{count}
+      even: may be only even value
+      exclusion: value reserved
+      greater_than: may be only greater than %{count}
+      greater_than_or_equal_to: may be only greater or equal to %{count}
+      inclusion: имеет непредусмотренное значение
+      invalid: wrong value
+      less_than: maybe only less then %{count}
+      less_than_or_equal_to: maybe only less or equal to %{count}
+      not_a_number: not a number
+      not_an_integer: not an integer
+      odd: may be only odd
+      record_invalid: ! 'Errors: %{errors}'
+      taken: allready exists
+      too_long:
+        few: too long (cannot be more then %{count} symbols)
+        many: too long (cannot be more then %{count} symbols)
+        one: too long (cannot be more then %{count} symbol)
+        other: too long (cannot be more then %{count} symbols)
+      too_short:
+        few: too short (cannot be less then %{count} symbols)
+        many: too short (cannot be less then %{count} symbols)
+        one: too short (cannot be less then %{count} symbol)
+        other: too short (cannot be less then %{count} symbols)
+      wrong_length:
+        few: wrong length (must be exactly %{count} symbols)
+        many: wrong length (must be exactly %{count} symbols)
+        one: wrong length (must be exactly %{count} symbol)
+        other: wrong length (must be exactly %{count} symbols)
+    template:
+      body: ! 'Values are wrong for fields::'
+      header:
+        one: ! 'Falied to save becuse of %{count} errors'
+        few: ! 'Falied to save becuse of %{count} errors'
+        many: ! 'Falied to save becuse of %{count} errors'
+        other: ! 'Falied to save becuse of %{count} errors'
+  helpers:
+    select:
+      prompt: ! 'Choose...'
+    submit:
+      create: Create
+      submit: Submit
+      update: Update
+  number:
+    currency:
+      format:
+        delimiter: ! ' '
+        format: ! '%n %u'
+        precision: 0
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: rub.
+    format:
+      delimiter: ! ' '
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            few: billion
+            many: billion
+            one: billion
+            other: billion
+          million:
+            few: million
+            many: million
+            one: million
+            other: million
+          quadrillion:
+            few: quadrillion
+            many: quadrillion
+            one: quadrillion
+            other: quadrillion
+          thousand:
+            few: thousand
+            many: thousand
+            one: thousand
+            other: thousand
+          trillion:
+            few: trillion
+            many: trillion
+            one: trillion
+            other: trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            few: bytes
+            many: bytes
+            one: bytes
+            other: bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: AM
+    formats:
+      default: ! '%a, %d %b %Y, %H:%M:%S %z'
+      long: ! '%d %B %Y, %H:%M'
+      short: ! '%d %b, %H:%M'
+    pm: PM

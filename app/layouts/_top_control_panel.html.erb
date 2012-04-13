@@ -1,0 +1,20 @@
+<!-- start control panel -->
+        	<ul>
+			<% if @current_user %>
+    		<li><p>Привет, <strong><%= @current_user.name %></strong>! <% if @current_user.status != 1 %>(<%= @current_user.text_status %>)<% end %></p></li>
+			<% if @current_user.status == 3 %>
+			<li><%= link_to "Админ", admin_path, class: "first" %></li>
+			<% end %>
+			<% if @current_user.status == 2 %>
+			<li><%= link_to "Модератор", moderator_path, class: "first" %></li>
+			<% end %>
+			<li><%= link_to "Новых событий: #{@current_user.unreaded_recieved_resume_responses.count + @current_user.unreaded_recieved_vacancy_responses.count + @current_user.unreaded_sent_resume_responses.count + @current_user.unreaded_sent_vacancy_responses.count}", responses_path %></li>
+
+			<li><%= link_to "Выйти", logout_path, class: "last", remote: true %></li>
+            <% else %>
+			<li><p>Вы не авторизованы.</p></li>
+			<li><%= link_to "Зарегистрироваться", register_path, class: "first" %></li>
+			<li><%= link_to "Войти", login_path, class: "top_login_btn last", remote: true %></li>
+			<% end %>
+            </ul>
+<!-- end control panel -->

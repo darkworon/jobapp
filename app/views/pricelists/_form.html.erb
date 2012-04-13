@@ -1,0 +1,52 @@
+<%= form_for(@pricelist) do |f| %>
+  <% if @pricelist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pricelist.errors.count, "error") %> prohibited this pricelist from being saved:</h2>
+
+      <ul>
+      <% @pricelist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "text medium" %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price, class: "text medium", style:"width:70px;" %>
+  </div>
+  <div class="field">
+    <%= f.label :entry_type %>
+    <%= f.select :entry_type, entry_types, {}, { id: "cbo", class: "select" } %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: "text medium", style:"width:70px;" %>
+  </div>
+  <div class="field">
+    <%= f.label :period %>
+    <%= f.number_field :period, class: "text medium" %>
+  </div>
+  <div id="inline_display" class="field">
+    <%= f.check_box :available_for_companies %> <%= f.label :available_for_companies %>
+    
+  </div>
+  <div class="field">
+    <%= f.label :date_start %>
+    <%= f.text_field :date_start, class: "text medium", style:"width:120px;" %>
+  </div>
+  <div class="field">
+    <%= f.label :date_end %>
+    <%= f.text_field :date_end, class: "text medium", style:"width:120px;" %>
+  </div>
+	<div id="inline_display" class="field">
+		<%= f.check_box :auto_activate %> <%= f.label :auto_activate %>
+	</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

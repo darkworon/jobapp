@@ -1,0 +1,26 @@
+<% if notice %>
+<div class="container_12" style="min-width:500px;max-width:700px;">
+<div class="notification success canhide" style="text-align:center;margin-top:20px;margin-bottom:-94px;font-size:16px;">
+    <p><strong></strong><%= notice %></p>                
+</div>
+</div>
+<% end %>
+<% if flash[:error] %>
+<div class="container_12" style="min-width:500px;max-width:700px;">
+<div class="notification failure canhide" style="text-align:center;margin-top:20px;margin-bottom:-94px;font-size:16px;">
+    <p><strong>Error:</strong> <%= flash[:error] %></p>                
+</div>
+</div>
+<% end %>
+<% if flash[:alert] %>
+<div class="container_12" style="min-width:500px;max-width:700px;">
+<div class="notification information canhide" style="text-align:center;margin-top:20px;margin-bottom:-94px;font-size:16px;">
+    <p><strong></strong> <%= flash[:alert] %></p>                
+</div>
+</div>
+<% end %>
+<div id="admin_wrapper">
+<%= render("form") %>
+<%= t(".forgot_password") %> <%= link_to t(".recover"), recover_password_path(:back_url => params[:back_url]) %> <%= t('.your_account') %>
+<%= link_to t('.register'), register_path(:back_url => params[:back_url]) %><%= t('.if_you_dont_yet') %>
+</div><!-- end admin wrapper -->

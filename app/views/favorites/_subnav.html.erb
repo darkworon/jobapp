@@ -1,0 +1,9 @@
+<% if params[:action] == "vacancies" %>
+<li><%= link_to "Создать вакансию", new_vacancy_path, class: [sub_active_ca?("vacancies","new"), sub_active_ca?("vacancies","create")]%></li>
+<li><%= link_to "Мои вакансии", vacancies_path, class: cp_sub(vacancies_path) %></li>
+<li><%= link_to "Избранные вакансии", favorite_vacancies_path, class: ["sub_nav_last", cp_sub(favorite_vacancies_path)] %></li>
+<% else %>
+<li><%= link_to "Создать резюме", new_resume_path, class: [sub_active_ca?("resumes","new"), sub_active_ca?("resumes","create")]%></li>
+<li><%= link_to "Мои резюме", resumes_path, class: cp_sub(resumes_path) %></li>
+<li><%= link_to "Избранные резюме", favorite_resumes_path, class: ["sub_nav_last", cp_sub(favorite_resumes_path)] %></li>
+<% end %>

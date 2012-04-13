@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @payment_provider.name %>
+</p>
+
+<p>
+  <b>Payment url:</b>
+  <%= @payment_provider.payment_url %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @payment_provider.website %>
+</p>
+
+<p>
+  <b>Is online payment:</b>
+  <%= @payment_provider.is_online_payment %>
+</p>
+
+
+<%= link_to 'Edit', edit_payment_provider_path(@payment_provider) %> |
+<%= link_to 'Back', payment_providers_path %>

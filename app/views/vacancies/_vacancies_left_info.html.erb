@@ -1,0 +1,28 @@
+<% vacancies_left = @vacancies_max - @current_user.vacancies.where(status: 1).count %>
+<% if vacancies_left > 0 %>
+	<%= t '.you_can_publish', :count => vacancies_left %><br /><br />
+<% else %>
+	<%= t '.limit_exceeded' %><br /><br />
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(".salary.editable").editable('<%= vacancy_salary_path %>', {
+						 loadurl: '<%= vacancy_salary_path %>',
+						 cssclass: "salary_edit",
+						 name : 'salary',
+		         submit    : '<%= t("global.ok") %>',
+						 cancel: '<%= t("global.cancel") %>',
+		         indicator : '<%= t("global.saving") %>',
+		         tooltip   : '<%= t(".click_to_edit") %>'				
+	});
+	$(".priority.editable").editable('<%= vacancy_priority_path %>', {
+					type: "select",
+					 //loadurl: '<%= vacancy_priority_path %>',
+					 data: '{"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10}',
+					 name : 'priority',
+	         //indicator : 'Сохраняем...',
+	         tooltip   : '<%= t(".click_to_edit") %>'					
+	  });
+		$('select').live('change', function () {
+		             $(this).parent().submit();
+		        });
+</script>

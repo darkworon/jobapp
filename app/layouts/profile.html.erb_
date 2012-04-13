@@ -1,0 +1,1 @@
+			<li><%= link_to "Профиль", user_subscriptions_path, class: "first" %></li>

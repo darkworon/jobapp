@@ -1,0 +1,106 @@
+<div id="vacancy_search" class="container_12">
+	<script type="text/javascript" charset="utf-8">
+	function setUrlTitle() {
+		var text = $("input#search").val();
+		if ($.fragment().page){
+			$.setFragment({ "search" : text, "page" : 1 });
+		} else {
+			$.setFragment({ "search" : text });
+		}
+		$.setFragment({ "search" : text });
+		if ($("input#search").val() != ""){
+			document.title = $("input#search").val() + " - <%= @site_title_base %> ";;
+		} else {
+			document.title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";;
+		}
+	}
+	(function($){var a=$.ui.mouse.prototype._mouseMove;$.ui.mouse.prototype._mouseMove=function(b){b.button=1;a.apply(this,[b]);}}(jQuery));
+	$(function(){
+		$("#vacancy_search, #resume_search").submit(function(){
+			setUrlTitle();
+		});
+		$("#vacancy_search input.submit").click(function(){
+			setUrlTitle();
+		});
+		$( "input#search" ).autocomplete({
+			class: "autocomplete",
+			delay: 0,
+			source: function( request, response ) {
+				$.ajax({
+					url: "<%= professions_vacancy_list_path %>",
+					dataType: "json",
+					data: {
+						search: request.term
+					},
+					success: function( data ) {
+						response( $.map( data, function( item ) {
+							return {
+								label: item[0] + " - " + item[1] + " <%= t('search.found') %>",
+								value: item[0]
+							}
+						}));
+					}
+				});
+			},
+			//minLength: 2,
+			select: function(event, ui) {
+				$("input#search").val(ui.item.value);
+				var text = $("input#search").val();
+				setUrlTitle();
+			}
+		});
+
+	});
+	</script>
+	<ul class="tabs">
+		<li><%= link_to t('search.vacancy.tab_title'), search_vacancy_path %></li>
+		<li><%= link_to t('search.resume.tab_title'), search_resume_path %></li>
+    </ul>
+<div class="tab_container">
+	<div id="tab2" class="tab_content">
+		<h2><%= t('.header') %></h2>
+		<center>
+		<form id="vacancy_search" action="<%= search_vacancy_path %>" method="get" data-remote="true">
+		  <p>
+		    <%= text_field_tag :search, params[:search], { class: "text medium", style: "width:500px;" } %>
+		    <%= submit_tag t('.button'), :name => nil, class: "submit", style: "height:32px;width:100px;margin-top:6px" %>
+		  </p>
+		</form>
+		</center>
+	<% if params[:search] %>
+		<% unless @vacancies.empty? %>
+		<i><%= 	I18n.translate :vacancies_found, :count => @vacancies.total_entries %></i>...
+			<% @vacancies.each do |vacancy| %>
+		  	<p class="search_item">
+		    	<h2 class="search_item_header"><%= link_to vacancy.title, vacancy_path(vacancy), target: :_blank %> (<%= number_to_currency(vacancy.salary) %>)<span class="fav" id="<%= vacancy.id %>"><%= render partial: "favorites", locals: { user: @current_user, job: vacancy } %></span></h2>
+		    	<b><%= t '.requirements' %>:</b> <%= truncate(vacancy.career, :length => 300) %><br />
+					<b><%= t '.conditions' %>:</b> <%= truncate(vacancy.description, :length => 300) %><br />
+		    	<b><%= t '.city' %>:</b> <%= vacancy.city %><br />
+		    	<b><%= t '.salary' %>:</b> <%= number_to_currency(vacancy.salary) %><br />
+					<b><%= t '.company' %>:</b> <%= link_to vacancy.company.short_name, vacancy.company %><br /><br />
+					<span class="search_item_date_info"><%= t '.published' %> <%= time_ago_in_words(vacancy.created_at) %> <%= t '.ago'%></span>
+					<span class="search_item_actions">
+					<% if @current_user %>
+			    <% if @current_user.is_moderator? %>
+			    <%= link_to "Забанить", ban_vacancy_path(vacancy), method: :post, remote: true, class: "search_vacancy_ban" %> |
+			    <%= link_to "Скрыть из поиска", hide_vacancy_path(vacancy), method: :post, remote: true, class: "search_vacancy_hide" %> |
+			    <%= link_to "Редактировать", edit_vacancy_path(vacancy) %> | 
+			    <% end %>
+			    <% end %>
+			    <%= link_to t("vacancies.vacancy.create_based_on"), new_vacancy_based_on_path(vacancy), class: "submit", target: :_blank %>
+					</span>
+			</p>
+			<% end %>
+
+			<%= will_paginate @vacancies, id: "pagination", class: "search_pagination"  %>
+		<% else %>
+		<p><%= t('search.nothing_found') %></p>
+		<% end %>
+	
+	<% end %>
+	</div>
+	
+	</div>
+	<%= render "sticky_block" %>
+</div>
+

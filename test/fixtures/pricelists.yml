@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  price: 
+  points: 1
+  period: 1
+  available_for_companies: false
+  is_active: false
+  date_start: 2012-03-24
+  date_end: 2012-03-24
+
+two:
+  name: MyString
+  price: 
+  points: 1
+  period: 1
+  available_for_companies: false
+  is_active: false
+  date_start: 2012-03-24
+  date_end: 2012-03-24

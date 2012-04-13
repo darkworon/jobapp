@@ -1,0 +1,63 @@
+<% if true %>
+<h1>Подписки</h1>
+<p>Функционал подписок отключен.</p>
+<% else %>
+<% if @subscriptions.count > 0 %>
+<h1>Оформленные подписки</h1>
+<table>
+	<tr>
+		<th>Название</th>
+		<th>Сумма</th>
+		<th>Статус</th>
+		<th>Дата начала</th>
+		<th>Дата окончания</th>
+		<th></th>
+	</tr>
+	<% @subscriptions.each do |s| %>
+		<% if s.status == 1 %>
+		<tr class="active">
+		<% elsif s.status == 2 %>
+		<tr class="ended">
+		<% elsif s.status == 3 %>
+		<tr class="freezed">
+		<% elsif s.status == -1 %>
+		<tr class="unsuccessful">
+		<% else %>
+		<tr>
+		<% end %>
+			<td><%= s.pricelist.name %></td>
+			<td><%= number_to_currency(s.sum) %></td>
+			<td><%= s.translated_status %>
+			<% if s.status == 1 or s.status == 2  %>
+			<td><%= I18n.l s.date_start, :format => :short %></td>
+			<td><%= I18n.l s.date_end, :format => :short %></td>
+			<% elsif s.status == 3 %>
+			<td><%= I18n.l s.date_start, :format => :short %></td>
+			<td><center>------</center></td>
+			<% else %>
+			<td><center>------</center></td>
+			<td><center>------</center></td>
+			<% end %>
+			<% if s.status == 0 or s.status == -1 %>
+			<td><%= link_to "Оплатить", pay_order_path(order_id: s.id, sum: s.sum) %></td>
+			<% else %>
+			<td></td>
+			<% end %>
+		</tr>
+
+		
+		<% end %>
+			</table>
+			<br />
+Активных подписок: <%= @current_user.subscriptions.count %>.<br /><br />
+<% else %>
+	Нет подписок.
+	
+<% end %>
+<% if @current_user.is_activated? %>
+<%= link_to "Оформить", new_order_path %>
+<% else %>
+<%= link_to "Оформить", "#", class: "unactivated_new_order"%>
+<% end %>
+<% end %>
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title><%= page_title %></title>
+<%= stylesheet_link_tag    "jquery_ui", :media => "all" %>
+<%= stylesheet_link_tag    "styles", :media => "all" %>
+<%= stylesheet_link_tag    "facebox", :media => "all" %>
+
+
+
+<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "jquery.ba-hashchange.min" %>
+<%= javascript_include_tag "jquery.ba-url.min" %>
+<% if params[:locale] == "ru" %>
+<%= javascript_include_tag "jquery.datepick-ru" %>
+<% end %>
+
+<%= csrf_meta_tags %>
+<meta name="title" content="<%= @site_title %>">
+<meta name="description" content="Первый сайт, на котором вы можете без труда найти работу или соотрудника для своей компании. При этом, вам не придется заполнять кучу бесполезных форм.">
+<meta name="keywords" content="работа поиск работы вакансии резюме устроиться зарплата фриланс соотрудник соискатель найти_работу суперджоб superjob job4fun job_for_fun">
+
+<script type="text/javascript">
+//$(document).ready(
+//  function(){
+//	$.ajax({
+//        url: "/status/check",
+//        type: "GET",
+//        dataType: "script"
+//   });
+//    setInterval(function(){
+//      $.ajax({
+//        url: "/status/check",
+//        type: "GET",
+//        dataType: "script"
+//    });
+//  }, 20000 );
+//});
+</script>
+</head>
+
+<body>
+
+<div id="header" class="png_bg">
+
+    <div id="head_wrap" class="container_12">
+    
+        <!-- start of logo - you could replace this with an image of your logo -->
+        <div id="logo" class="grid_4">
+          <h1 class="header"><%= @site_header.html_safe %></h1>
+        </div>
+        <!-- end logo -->
+        <div id="controlpanel" class="grid_8">
+		<%= render :partial => '/layouts/top_control_panel' %>
+		</div>
+        
+    	<%= render :partial => '/layouts/language_select' %>
+        <!-- start navigation -->
+      	<div id="navigation" class=" grid_12">
+           
+            <ul>
+            
+                <li><%= link_to t(".main"), home_path, class: cp_a(["/", home_path, admin_path, search_resume_path, search_vacancy_path]) %></li>
+<% if @current_user %>
+				<li><%= link_to t(".vacancies"), vacancies_path, class: [is_active?("vacancies"), is_active_ca?("favorites", "vacancies")] %></li>
+				<li><%= link_to t(".resumes"), resumes_path, class: [is_active?("resumes"), is_active_ca?("favorites", "resumes")] %></li>
+				<li><%= link_to t(".companies"), companies_path, class: is_active?("companies") %></li>
+                <li><%= link_to t(".profile"), user_profile_path, class: [is_active_ca?("users", "profile"), is_active_ca?("users", "subscriptions")] %></li>
+<% end %>
+            </ul>
+          
+        </div>
+        <!-- end navigation -->
+     
+    </div><!-- end headwarp  -->
+</div><!-- end header -->
+
+
+<!-- staqrt subnav -->
+<div id="sub_nav">
+
+<div id="subnav_wrap" class="container_12">
+	
+    <!-- start sub nav list -->
+	<div id="subnav" class=" grid_12">
+    
+        <ul>
+        
+            <%= render "subnav" rescue "" %>
+            
+        </ul>
+    
+    </div>
+    <!-- end subnavigation list -->	
+
+</div>
+
+
+</div>
+<!-- end sub_nav -->
+
+<!-- EVERYTING BELOW IS THE MAIN CONTENT -->
+<div class="flash">
+  </div>
+
+<div id="main_content_wrap" class="container_12">
+	<div class="container_12">
+        <% if flash[:error] %>
+        <!-- FAILURE - USES CLASS OF "FAILURE" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+        <div class="notification failure canhide">
+        
+            <p><strong></strong><%= flash[:error] %></p>                
+        </div>
+        <% end %>
+        <% if notice %>
+        <!-- SUCCESS - USES CLASS OF "SUCCESS" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+        <div class="notification success canhide">
+        
+            <p><strong></strong><%= notice %></p>
+        </div>  
+        <% elsif flash[:alert] %>
+        <!-- WARNING - USES CLASS OF "WARNING" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+        <div class="notification warning canhide">
+        	
+            <p><strong></strong><%= flash[:alert] %></p>
+        </div>
+		<% elsif flash[:info] %>
+        <!-- INFORMATION - USES CLASS OF "IN2FORMATION" and the CANHIDE ENABLES CICK TO FADE AWAY-->
+        <div class="notification information canhide">
+        
+          <p><strong></strong><%= flash[:info] %></p>
+		</div>
+		<% end %>
+
+ </div>
+	<div class="main_container_div">
+	<%= yield %>
+	</div>
+	<div class="clearfix">&nbsp;</div>
+</div>
+
+<div class="clearfix">&nbsp;</div>
+<div class="container_12">
+
+
+<div class="login_modal"></div>
+   <!-- START FOOTER -->
+    
+    <div id="footer" class="grid_12">
+    
+        <p>Job4Fun.Ru &copy; 2012</p>
+        <p>
+			<%= link_to LANGUAGES[0][0], url_for(locale: LANGUAGES[0][1]) %> | 
+			<%= link_to LANGUAGES[1][0], url_for(locale: LANGUAGES[1][1]) %>
+		</p>
+		<br />
+		<p><%= Time.zone %></p>
+	</div>
+    <!-- END FOOTER -->       
+  </div><!-- end content wrap -->
+
+
+</body>
+</html>

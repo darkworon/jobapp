@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= page_title %></title>
+
+<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "jquery.validate" %>
+<%= csrf_meta_tags %>
+<meta name="title" content="<%= @site_title %>">
+<meta name="description" content="Первый сайт, на котором вы можете без труда найти работу или соотрудника для своей компании. При этом, вам не придется заполнять кучу бесполезных форм.">
+<meta name="keywords" content="работа поиск работы вакансии резюме устроиться зарплата фриланс соотрудник соискатель найти_работу суперджоб superjob job4fun job_for_fun">
+<!--Initiate form validation - in this example on the login form-->
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#loginform").validate();
+});
+</script>
+
+
+<!--This is the styling for the error message for form validation-->
+<style type="text/css">
+.error {
+	padding: 7px;
+	margin: 3px;
+	background-color: #FCC;
+	border: 1px solid #F00;
+	font-family: arial;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color: #000;
+	float: left;
+	width: 98%;
+	-moz-border-radius:5px;
+	-webkit-border-radius: 5px;
+}
+
+</style>
+
+<%= stylesheet_link_tag "styles" %>
+</head>
+
+<body>
+	
+	<%= link_to "<< На главную", home_path, style: "position: relative; top: 10px; left: 10px;" %>
+    
+    <%= yield %>
+
+</body>
+</html>
+
+

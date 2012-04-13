@@ -1,0 +1,61 @@
+<% if @vacancy_responses_recieved.count > 0 %>
+<h1>Listing recieved vacancy responses</h1>
+<table>
+  <tr>
+    <th>Vacancy</th>
+    <th>Your Resume</th>
+	<th></th>
+	<th></th>
+  </tr>
+<% @vacancy_responses_recieved.each do |vacancy_response| %>
+<% if vacancy_response.status == 3 %>
+  <tr class="declined">
+<% elsif vacancy_response.status == 2 %>
+	<tr class="accepted">
+<% end %>
+    <td><%= link_to vacancy_response.vacancy.title, vacancy_path(vacancy_response.vacancy), target: "_blank" %></td>
+    <td><%= link_to vacancy_response.resume.title, resume_path(vacancy_response.resume), target: "_blank" %></td>
+	<% if vacancy_response.status <= 1 %>
+	<td><%= link_to "Accept", accept_vacancy_response_path(vacancy_response) %></td>
+	<td><%= link_to "Decline", decline_vacancy_response_path(vacancy_response) %></td>
+	<% elsif vacancy_response.status == 2 %>
+	    <td><%= vacancy_response.translated_status %></td>
+		<td><%= link_to "Decline", decline_vacancy_response_path(vacancy_response) %></td>
+	<% elsif vacancy_response.status == 3 %>
+		<td><%= link_to "Accept", accept_vacancy_response_path(vacancy_response) %></td>
+		<td><%= vacancy_response.translated_status %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table><br /><br />
+
+<% end %>
+<% if @vacancy_responses_sent.count > 0 %>
+<h1>Listing sent vacancy responses</h1>
+
+<table>
+  <tr>
+    <th>Vacancy</th>
+    <th>Your Resume</th>
+    <th>Status</th>
+	<th></th>
+  </tr>
+
+<% @vacancy_responses_sent.each do |vacancy_response| %>
+<% if vacancy_response.status == 3 %>
+  <tr class="declined">
+<% elsif vacancy_response.status == 2 %>
+	<tr class="accepted">
+<% end %>
+    <td><%= link_to vacancy_response.vacancy.title, vacancy_path(vacancy_response.vacancy), target: "_blank" %></td>
+    <td><%= link_to vacancy_response.resume.title, resume_path(vacancy_response.resume), target: "_blank" %></td>
+    <td><%= vacancy_response.translated_status %></td>
+	<% if !vacancy_response.viewed_by_sender %>
+	<td><%= link_to "OK", ok_vacancy_response_path(vacancy_response), method: :post %></td>
+	<% else %>
+	<td></td>
+	<% end %>
+  </tr>
+<% end %>
+</table><br /><br />
+<% end %>

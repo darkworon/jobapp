@@ -1,0 +1,27 @@
+<h1>All Vacancies</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Career</th>
+    <th>City</th>
+    <th>Salary</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vacancies.each do |vacancy| %>
+  <tr>
+    <td><%= link_to vacancy.title, vacancy_path(vacancy), target: "_blank" %></td>
+    <td><%= truncate(vacancy.description, :length => 120) %></td>
+    <td><%= truncate(vacancy.career, :length => 150) %></td>
+    <td><%= vacancy.city %></td>
+    <td><%= vacancy.salary %></td>
+    <td><%= link_to 'Edit', edit_vacancy_path(vacancy), target: "_blank" %></td>
+    <td><%= link_to 'X', vacancy_path(vacancy), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @vacancies %>
+<br />

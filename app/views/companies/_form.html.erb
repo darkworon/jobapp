@@ -1,0 +1,71 @@
+<%= form_for(@company) do |f| %>
+<% if @company.errors.any? %>
+  <div id="error_explanation">
+    <h4><%=raw t('errors.template.header', count: @company.errors.count,
+	model: t('activerecord.models.vacancy')) %>:</h4>
+
+    <ul>
+    <% @company.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+	<div class="field">
+    <%= f.label :official_name %>
+    <%= f.text_field :official_name, class: "text medium required" %>
+  </div>
+  <div class="field">
+    <%= f.label :short_name %>
+    <%= f.text_field :short_name, class: "text low required" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :legal_address %>
+    <%= f.text_field :legal_address, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_1 %>
+    <%= f.text_field :phone_1, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_2 %>
+    <%= f.text_field :phone_2, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :email_1 %>
+    <%= f.text_field :email_1, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :email_2 %>
+    <%= f.text_field :email_2, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :inn %>
+    <%= f.text_field :inn, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :kpp %>
+    <%= f.text_field :kpp, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :ogrn %>
+    <%= f.text_field :ogrn, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :website %>
+    <%= f.text_field :website, class: "text low required" %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Описание" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %><%= link_to "<< В мои компании", companies_path, style: "margin-left:-3px;padding:7px;", class: "backlink" %>
+  </div>
+<% end %>

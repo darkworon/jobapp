@@ -1,0 +1,35 @@
+<h1>Черновые подписки</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Period</th>
+    <th>Available for companies</th>
+    <th>Status</th>
+    <th>Date start</th>
+    <th>Date end</th>
+		<th></th>
+		<th></th>
+		<th></th>
+  </tr>
+
+<% @pricelists.each do |pricelist| %>
+  <tr>
+    <td><%= pricelist.name %></td>
+    <td><%= pricelist.price %></td>
+    <td><%= pricelist.period %></td>
+    <td><%= pricelist.available_for_companies %></td>
+    <td><%= pricelist.status %></td>
+    <td><%= pricelist.date_start %></td>
+    <td><%= pricelist.date_end %></td>
+		<td><%= link_to "Edit", edit_pricelist_path(pricelist) %>
+		<% if pricelist.date_start.blank? or pricelist.date_start <= Date.today %>
+		<td><%= link_to "Activate", activate_pricelist_path(pricelist), method: :post %></td>
+		<% else %>
+		<td>Auto-activation</td>
+		<% end %>
+		<td><%= link_to "Удалить", "#" %></td>
+  </tr>
+<% end %>
+</table>

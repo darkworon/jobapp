@@ -1,0 +1,2 @@
+$('tr#<%= @resume.id %>').replaceWith('<%= escape_javascript(render @resume) %>');
+$('div.resumes_left_info').html('<%= escape_javascript(render "resumes_left_info")%>');

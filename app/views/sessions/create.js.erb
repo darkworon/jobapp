@@ -1,0 +1,9 @@
+<% if @current_user %>
+$("div#controlpanel").html('<%= escape_javascript(render(:partial => "/layouts/top_control_panel")) %>');
+//$.lazybox.close();
+//$.flash_notice("Вы вошли, как <%= @current_user.email %>", 4);
+window.location = '<%= home_path %>';
+<% else %>
+$.flash_error("Неверная комбианция email/пароля", 5);
+$("#lazybox").find("button").removeAttr("disabled");
+<% end %>

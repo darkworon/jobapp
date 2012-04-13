@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_expence.user_id %>
+</p>
+
+<p>
+  <b>User subscription:</b>
+  <%= @user_expence.user_subscription_id %>
+</p>
+
+<p>
+  <b>Points expended:</b>
+  <%= @user_expence.points_expended %>
+</p>
+
+<p>
+  <b>Service:</b>
+  <%= @user_expence.service_id %>
+</p>
+
+<p>
+  <b>Integer:</b>
+  <%= @user_expence.integer %>
+</p>
+
+<p>
+  <b>Entry:</b>
+  <%= @user_expence.entry_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_expence_path(@user_expence) %> |
+<%= link_to 'Back', user_expences_path %>

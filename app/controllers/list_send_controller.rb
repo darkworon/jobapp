@@ -1,0 +1,4 @@
+class ListSendController < ApplicationController
+  
+  
+end

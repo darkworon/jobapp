@@ -1,0 +1,11 @@
+var all_res = "Все резюме - Job4Fun";
+//var parent = $("#vacancy_search").parent();
+$("#vacancy_search").replaceWith('<%= escape_javascript(render(partial:"resume")) %>');
+$("#resume_search").replaceWith('<%= escape_javascript(render(partial: "resume")) %>');
+//$("#vacancy_search").remove();
+$(".search_resume_hide").click(function(){
+	$(this).replaceWith("Скрыто!");
+});
+$(".search_resume_ban").click(function(){
+	$(this).replaceWith("Забанено!");
+});

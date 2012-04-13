@@ -1,0 +1,88 @@
+<div id="resume_search" class="container_12">
+	<script type="text/javascript" charset="utf-8">
+	$(function() {
+		$("#resume_search").submit(function(){
+			setUrlTitle();
+		});
+		$("#resume_search input.submit").click(function(){
+			setUrlTitle();
+		});
+		$( "input#search" ).autocomplete({
+			delay: 0,
+			source: function( request, response ) {
+				$.ajax({
+					url: "<%= professions_resume_list_path %>",
+					dataType: "json",
+					data: {
+						search: request.term
+					},
+					success: function( data ) {
+						response( $.map( data, function( item ) {
+							return {
+								label: item[0] + " - " + item[1] + " найдено",
+								value: item[0]
+							}
+						}));
+					}
+				});
+			},
+			//minLength: 2,
+			select: function( event, ui ) {
+				$("input#search").val(ui.item.value);
+				//var url = window.location.pathname;
+				var text = $("input#search").val();
+				setUrlTitle();
+			}
+		});
+	});
+	</script>
+	<ul class="tabs">
+		<li><%= link_to t('search.vacancy.tab_title'), search_vacancy_path %></li>
+		<li><%= link_to t('search.resume.tab_title'), search_resume_path %></li>
+    </ul>
+<div class="tab_container">
+	<div id="tab2" class="tab_content">
+		<h2><%= t('.header')%></h2>
+		<center>
+		<form id="resume_search" action="<%= search_resume_path %>" method="get" data-remote="true">
+		  <p>
+		    <%= text_field_tag :search, params[:search], { class: "text medium", style: "width:500px;" } %>
+		    <%= submit_tag t('.button'), :name => nil, class: "submit", style: "height:32px;width:100px;margin-top:6px" %>
+		  </p>
+		</form>
+		</center>
+	<% if params[:search] %>
+		<% unless @resumes.empty? %>
+		<i><%= t :resumes_found, :count => @resumes.total_entries %></i>...
+			<% @resumes.each do |resume| %>
+		  	<p class="search_item">
+		    	<h2 class="search_item_header"><%= link_to resume.title, resume_path(resume), target: :_blank %> (<%= number_to_currency(resume.salary) %>)<span class="fav" id="<%= resume.id %>"><%= render partial: "favorites", locals: { user: @current_user, job: resume } %></span></h2>
+		    	<b><%= t('activerecord.attributes.resume.career')%>:</b> <%= truncate(resume.career, :length => 300) %><br />
+					<b><%= t('activerecord.attributes.resume.description')%>:</b> <%= truncate(resume.description, :length => 300) %><br />
+		    	<b><%= t('activerecord.attributes.job.city')%>:</b> <%= resume.city %><br />
+		    	<b><%= t('activerecord.attributes.job.salary')%>:</b> <%= number_to_currency(resume.salary) %><br /><br />
+					<span class="search_item_date_info"><%= t '.published' %> <%= time_ago_in_words(resume.created_at) %> <%= t '.ago'%></span>
+					<span class="search_item_actions">
+					<% if @current_user %>
+			    <% if @current_user.is_moderator? %>
+			    <%= link_to "Забанить", "#", method: :post, remote: true, class: "search_resume_ban" %> |
+			    <%= link_to "Скрыть из поиска", hide_resume_path(resume), method: :post, remote: true, class: "search_resume_hide" %> |
+			    <%= link_to "Редактировать", edit_resume_path(resume) %> | 
+			    <% end %>
+			    <% end %>
+			    <%= link_to t('resumes.resume.create_based_on'), new_resume_based_on_path(resume), class: "submit", target: :_blank %>
+					</span>
+			</p>
+			<% end %>
+			
+			<%= will_paginate @resumes, id: "pagination", class: "search_pagination"  %>
+		<% else %>
+		<p><%= t('search.nothing_found') %></p>
+		<% end %>
+	
+	<% end %>
+	</div>
+		
+	</div>
+	<%= render "sticky_block" %>
+</div>

@@ -1,0 +1,29 @@
+<h1>Listing purchase_actions</h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Shedule date</th>
+    <th>Entry uin</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @purchase_actions.each do |purchase_action| %>
+  <tr>
+    <td><%= purchase_action.order_id %></td>
+    <td><%= purchase_action.shedule_date %></td>
+    <td><%= purchase_action.entry_uin %></td>
+    <td><%= purchase_action.status %></td>
+    <td><%= link_to 'Show', purchase_action %></td>
+    <td><%= link_to 'Edit', edit_purchase_action_path(purchase_action) %></td>
+    <td><%= link_to 'Destroy', purchase_action, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Purchase action', new_purchase_action_path %>

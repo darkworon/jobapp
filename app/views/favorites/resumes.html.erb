@@ -1,0 +1,34 @@
+	<h1>Избранные резюме</h1>
+<% if @resumes.count > 0 %>
+	<table>
+	  <tr>
+			<th></th>
+	    <th>Наименование</th>
+	    <th>Навыки</th>
+	    <th>Карьера</th>
+	    <th>Город</th>
+	    <th>Заработная плата</th>
+			<th></th>
+			<th></th>
+	  </tr>
+	<%= form_tag do %>
+	<% @resumes.each do |resume| %>
+	  <tr id="<%= resume.id %>">
+			<td><%= check_box_tag "resumes_sel[]", resume.id %></td>
+	    <td><%= link_to resume.title, resume_path(resume) %></td>
+	    <td><%= truncate(resume.description, :length => 120) %></td>
+	    <td><%= truncate(resume.career, :length => 150) %></td>
+	    <td><%= resume.city %></td>
+	    <td><%= number_to_currency(resume.salary) %></td>
+			<td><%= link_to "Создать на основе", new_resume_based_on_path(resume), target: "_blank" %></td>
+			<td><br /><%= link_to image_tag("favorite_remove.png", :title => "Удалить из избранного", :class => "favico remove", style: "width:25px;height:25px;"), remove_favorite_path(id: resume), class: "favorite_remove", remote: true %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<br />
+	Email: <%= text_field_tag :email, "", style: "width:200px;" %> <%= submit_tag "Порекомендовать" %>
+
+<% end %>
+<% else %>
+<p>Вы не добавили в избранное ни одного резюме</p>
+<% end %>

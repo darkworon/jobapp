@@ -1,0 +1,53 @@
+<script type="text/javascript" charset="utf-8">
+function setUrlTitle() {
+	var text = $("input#search").val();
+	if ($.fragment().page){
+		$.setFragment({ "search" : text, "page" : 1 });
+	} else {
+		$.setFragment({ "search" : text });
+	}
+	$.setFragment({ "search" : text });
+	if ($("input#search").val() != ""){
+		document.title = $("input#search").val() + " - <%= @site_title_base %> ";;
+	} else {
+		document.title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";;
+	}
+}
+	$(function(){
+		$.fragmentChange(true);
+		//$.fragmentChange(true);
+	  $(document).bind("fragmentChange.search", function() {
+	    $.getScript($.queryString(document.location.href, { "search" : $.fragment().search, "page" : $.fragment().page }), function(){
+				if ($.fragment().page) {
+					$("html,body").scrollTop(0);
+					var title_start;
+					if ($.fragment().search) {
+						title = $.fragment().search + " - <%= @site_title_base %> ";;
+					} else {
+						title = "<%= t('.all') %>";
+					}
+					document.title = title + " - <%= t('.page') %> " + $.fragment().page + " - <%= @site_title_base %> ";;
+				} else {
+					var title;
+					if ($.fragment().search) {
+						title = $.fragment().search + " - <%= @site_title_base %> ";;
+					} else {
+						title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";;
+					}
+					document.title = title;
+				}
+			});
+	  });
+		if ($.fragment().search || $.fragment().page)
+		{
+			$(document).trigger("fragmentChange.search");
+
+		}
+		$(".search_pagination a").live("click", function() {
+			$.setFragment({ "page" : $.queryString(this.href).page });
+			$(".search_pagination").html('<%= t(".loading") %>');
+			return false;
+		});
+	});
+</script>
+<%= render partial: "vacancy" %>

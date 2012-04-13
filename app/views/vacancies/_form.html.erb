@@ -1,0 +1,79 @@
+<%= form_for @vacancy do |f| %>
+  <% if @vacancy.errors.any? %>
+    <div id="error_explanation">
+      <h4><%=raw t('errors.template.header', count: @vacancy.errors.count,
+		model: t('activerecord.models.vacancy')) %>:</h4>
+
+      <ul>
+      <% @vacancy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, size: 60, class: "text medium" %>
+</div>
+		<div class="field">
+		<%= f.label :type_of_job %>
+		<%= f.select :type_of_job, types_of_job, { prompt: true }, { id: "cbo", class: "select" } %>
+		</div>
+		<div class="field">
+		<%= f.label :education %>
+		<%= f.select :education, educations, { prompt: true }, { id: "cbo", class: "select" } %> 
+		</div>
+		<div class="field">
+		<%= f.label :sex %>
+		<%= f.select :sex, vacancy_sexes, { prompt: true }, { id: "cbo", class: "select" } %> 
+		</div>
+		<div class="field">
+		<%= f.label :age %>
+		от  <%= f.select :min_age, 16..80, {  }, { id: "cbo", class: "select" } %> 
+		до <%= f.select :max_age, 16..80, {  }, { id: "cbo", class: "select" } %> 
+		</div>
+		<div class="field"><%= f.label :company %>
+			<%= f.select :company_id, options_for_select(@current_user.companies.collect {|p| [p.short_name, p.id]}), { prompt: true }, { id: "cbo", class: "select" } %>
+		</div>
+<div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 6, cols: 40, class: "text medium" %>
+</div>
+<div class="field">
+    <%= f.label :career %>
+    <%= f.text_area :career, rows: 10, cols: 60, class: "text medium" %>
+</div>
+
+<div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: "text medium" %>
+</div>
+
+<div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "text medium" %>
+</div>
+
+
+<div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, class: "text medium" %>
+</div>
+
+<div class="field">
+    <%= f.label :email, "Контактный email" %>
+    <%= f.text_field :email, class: "text medium" %>
+</div>
+
+<div class="field">
+    <%= f.label :experience_period %>
+    <%= f.select :experience_period, experience_periods, { prompt: "Выберите..." }, { id: "cbo", class: "select" } %></div>
+<div id="salary" class="field">
+<%= f.label :salary %>
+<%= f.number_field :salary, class: "text medium", style: "width:120px;" %> рублей.
+</div>
+
+<div class="actions">
+    <%= f.submit %><%= link_to "<< В мои вакансии", vacancies_path, style: "margin-left:0px;padding:7px;", class: "backlink" %>
+</div>
+<% end %>

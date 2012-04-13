@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_subscription.user_id %>
+</p>
+
+<p>
+  <b>Pricelist:</b>
+  <%= @user_subscription.pricelist_id %>
+</p>
+
+<p>
+  <b>Payment:</b>
+  <%= @user_subscription.payment_id %>
+</p>
+
+<p>
+  <b>Points remain:</b>
+  <%= @user_subscription.points_remain %>
+</p>
+
+<p>
+  <b>Date start:</b>
+  <%= @user_subscription.date_start %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_subscription_path(@user_subscription) %> |
+<%= link_to 'Back', user_subscriptions_path %>

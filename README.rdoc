@@ -1,0 +1,28 @@
+== Installation guide
+
+1. Install all gems:
+    bundle install
+
+2. Install sphinx. On Debian:
+    apt-get install sphinxsearch
+
+3. Configure config/database.yml file
+
+4. Migrate DB Scheme:
+    rake db:create
+    rake db:migrate
+
+5. Run server:
+    rails s
+
+6. Create new vacancy and resume
+
+7. Stop server, run:
+    rake thinking_sphinx:index
+    rake thinking_sphinx:start
+
+8. Update crontab:
+    whenever -w
+    whenever -u
+
+9. Run server again

@@ -1,0 +1,62 @@
+<%= form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%=raw t('errors.template.header', count: @job.errors.count,
+		model: t('activerecord.models.job')) %>.</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, size: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, rows: 6, cols: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :career %><br />
+    <%= f.text_area :career, rows: 10, cols: 60 %>
+  </div>
+ <div class="field">
+	<%= f.label :entry_type %><br />
+	<%= f.select :entry_type, job_entry_types, :prompt => true %> 
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :salary %><br />
+    <%= f.number_field :salary %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.date_select :birthdate, :start_year => 1901, :prompt => true %>
+  </div>
+  <div class="field">
+    <%= f.label :experience_period %><br />
+    <%= f.number_field :experience_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

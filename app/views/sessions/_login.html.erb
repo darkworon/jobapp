@@ -1,0 +1,20 @@
+	<h2>Авторизация</h2>
+	<%= form_tag login_path, remote: true do %>
+	<p>
+		<%= label_tag :email, "Email:" %><br />
+		<%= text_field_tag :email, params[:email], class: "text" %>
+	</p>
+	<p>
+		<%= label_tag :password, "Пароль:" %><br />
+		<%= password_field_tag :password, params[:password], class: "text" %>
+	</p>
+	<center>
+	<p>
+		<%= button_tag "Войти", class: "button green", style: "height:40px; width:90px;font-size:16px;" %>
+		</p>
+		<p>
+		Забыли пароль? <%= link_to "Восстановите", recover_password_path(:back_url => params[:back_url]) %> его.<br />
+		<%= link_to "Зарегистрируйтесь", register_path(:back_url => params[:back_url]) %>, если вы еще не сделали этого.
+		</p>
+		</center>
+	<% end %>

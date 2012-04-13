@@ -1,0 +1,2 @@
+module BankingDetailsHelper
+end

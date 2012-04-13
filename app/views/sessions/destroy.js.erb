@@ -1,0 +1,6 @@
+<% unless @current_user %>
+$("div#controlpanel").fadeOut(400).delay(350).queue(function(n){
+	$(this).html('<%= escape_javascript(render(:partial => "/layouts/top_control_panel")) %>');
+	window.location = '<%= home_path %>';
+});
+<% end %>

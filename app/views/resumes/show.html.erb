@@ -1,0 +1,82 @@
+<style type="text/css" media="screen">
+
+.main_container_div p, .main_container_div p span {
+	font-size:14px;
+}
+p.career {
+}
+h1 {
+	font-size:300%;
+	margin-bottom:30px;
+}
+span.header {
+	font-family: Tahoma, Geneva, sans-serif; margin-top: 10px; margin-bottom: 20px; color: #666;
+	font-weight:bold;
+	margin-bottom:20px;
+	margin-top:25px;
+	font-size: 17px; color: #666; text-transform: uppercase;
+	display:block;
+}
+span {
+	display:block;
+	margin-top:7px;
+	margin-bottom:7px;
+}
+p.actions {
+	margin-top:30px;
+}
+.dates {
+	font-style:italic;
+	color:#bfbfbf;
+}
+</style>
+<h1><%= @resume.title %></h1>
+
+<p>
+  <span class="header">Карьера:</span>
+  <%= simple_format(@resume.career, :class => 'career') %>
+</p>
+
+<p>
+	<span class="header">Навыки и знания:</span>
+	<%= simple_format(@resume.description) %>
+</p>
+
+<p>
+  <span class="header">Опыт работы:</span>
+  <%= @resume.translated_experience_of_work %>
+</p>
+
+<p>
+  <span class="header">Зарплата:</span>
+  <%= number_to_currency(@resume.salary) %>
+</p>
+
+<p>
+  <span class="header">Город:</span>
+  <span class="like_input"><%= @resume.city %></span>
+</p>
+
+
+
+<p class="contacts">
+  <span class="header">Контакты:</span>
+	<span>Email: <%= @resume.email %><%= image_tag "email.png", :title => "Email", :class => "email", style: "width:21px; height:22px;position:absolute;margin-left:5px;margin-top:-1px;" %></span>
+  <span>Телефон: <%= @resume.phone %><%= image_tag "phone_number.png", :title => "Телефон", :class => "phone_number", style: "width:16px; height:16px;position:absolute;margin-left:5px" %></span>
+	<span>Имя: <%= @resume.name %></span>
+</p>
+<p class="dates">
+	<span class="header"></span>
+	<span>Опубликовано <%= l @resume.created_at, format: :long %></span>
+</p>
+<p class="actions">
+<% if @resume.user != @current_user or !@current_user %>
+<%= link_to "Откликнуться", resume_response_path, class: "submit" %>
+<% end %>
+
+<% if @current_user %>
+<% if @current_user.can_edit?(@resume) %>
+<%= link_to "Редактировать", edit_resume_path(@resume), class: "submit" %>
+<% end %>
+<% end %>
+</p>

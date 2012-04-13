@@ -1,0 +1,2 @@
+<% languages = [["English", url_for(:locale => :en)], ["Русский", url_for(:locale => :ru)]]%>
+<%= select_tag 'set_locale', options_for_select(languages, url_for), style: "width:100px;height:20px;" %>

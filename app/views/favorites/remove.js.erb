@@ -1,0 +1,3 @@
+$("span#<%= job.id %>.fav").html('<%= escape_javascript(link_to image_tag("favorite_add.png", :title => t("search.favorites.add"), :class => "favico add", style: "width:25px;height:25px;"), add_favorite_path(id: job.id), class: "favorite_add", remote: true) %>');
+$("tr#<%= job.id %>").remove();
+//$.flash_notice("Удалено из избранного.", 1);
