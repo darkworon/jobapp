@@ -98,6 +98,8 @@ en:
       click_to_edit: Click to edit...
       you_can_publish:
         one: "You can publish %{count} more vacancy."
+        few: "You can publish %{count} more vacancies."
+        many: "You can publish %{count} more vacancies."
         other: "You can publish %{count} more vacancies."
       limit_exceeded: "Limit of published vacancies exceeded. Please, buy subscription to publish more vacancies."
     subnav:
