@@ -8,26 +8,30 @@ User-agent: Yandex
 Crawl-delay: 2
 Disallow: /*/login/
 Disallow: /*/register/
-Sitemap: http://job4fun.ru/sitemap1.xml.gz
+Dissallow: /*/password/recover/
+Sitemap: http://job4fun.ru/sitemap_index.xml.gz
 Host: job4fun.ru
 
 User-agent: Google
 Crawl-delay: 2
 Disallow: /*/login/
 Disallow: /*/register/
-Sitemap: http://job4fun.ru/sitemap1.xml.gz
+Dissallow: /*/password/recover/
+Sitemap: http://job4fun.ru/sitemap_index.xml.gz
 Host: job4fun.ru
 
 User-agent: Slurp
 Crawl-delay: 8
 Disallow: /*/login/
 Disallow: /*/register/
-Sitemap: http://job4fun.ru/sitemap1.xml.gz
+Dissallow: /*/password/recover/
+Sitemap: http://job4fun.ru/sitemap_index.xml.gz
 Host: job4fun.ru
 
 User-agent: *
 Crawl-delay: 10
 Disallow: /*/login/
 Disallow: /*/register/
-Sitemap: http://job4fun.ru/sitemap1.xml.gz
+Dissallow: /*/password/recover/
+Sitemap: http://job4fun.ru/sitemap_index.xml.gz
 Host: job4fun.ru
