@@ -1,7 +1,8 @@
 require 'rubygems'
 require 'sitemap_generator'
 
-SitemapGenerator::Sitemap.default_host = 'http://job4fun.ru'
+SitemapGenerator::Sitemap.default_host = 'http://job4fun.ru/ru'
+SitemapGenerator::Sitemap.sitemaps_host = "http://job4fun.ru"
 SitemapGenerator::Sitemap.create do
   #add '/ru/catalog/resumes', :changefreq => 'daily', :priority => 1
   #add '/ru/catalog/vacancies', :changefreq => 'daily', :priority => 1
