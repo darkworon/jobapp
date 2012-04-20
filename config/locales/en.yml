@@ -1,4 +1,7 @@
 en:
+  recaptcha:
+    errors:
+      verification_failed: 'CAPTCHA is entered not properly.'
   global:
     are_you_sure: Are you sure?
     ok: OK

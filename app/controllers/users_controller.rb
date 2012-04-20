@@ -54,9 +54,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    @content_for_title = t('users.new.title')
     @user = User.new(params[:user])
     respond_to do |format|
-      if @user.save and verify_recaptcha(:model => @user, :message => "Captcha введена неверно.")
+      if verify_recaptcha(:model => @user) and @user.save
         #@user.authenticate(params[:password])
         #if params[:back_url]
         #  format.html { redirect_to params[:back_url] }

@@ -1,4 +1,7 @@
 ru:
+  recaptcha:
+    errors:
+      verification_failed: 'Captcha введена неверно.'
   global:
     are_you_sure: Вы уверены?
     ok: ОК
