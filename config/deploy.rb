@@ -33,6 +33,7 @@ after 'deploy:update_code', :roles => :app do
   run "cd #{current_release} && bundle exec whenever -w && bundle exec whenever -u"
   run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=production"
   run "cd #{deploy_to}/current && bundle exec rake ts:stop RAILS_ENV=production"
+  run "cd #{current_release} && bundle exec rake ts:index RAILS_ENV=production"
   run "cd #{current_release} && bundle exec rake ts:start RAILS_ENV=production"
   run "cd #{current_release} && bundle exec rake -s sitemap:refresh RAILS_ENV=production"
   run "RAILS_ENV=production #{current_release}/script/delayed_job restart"
