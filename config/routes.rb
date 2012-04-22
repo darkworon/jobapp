@@ -1,5 +1,5 @@
 Jobapp::Application.routes.draw do
-  scope '(:locale)' do
+  #scope '(:locale)' do
     match "catalog/vacancies" => "catalog#vacancies"
     match "catalog/resumes" => "catalog#resumes"
     resources :vacancies
@@ -116,7 +116,7 @@ Jobapp::Application.routes.draw do
     get "search/resume" => "search#resume"
     get "search/vacancy" => "search#vacancy"
     
-  end
+  #end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

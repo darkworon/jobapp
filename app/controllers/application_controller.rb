@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'digest/sha1'
 class ApplicationController < ActionController::Base
-  before_filter :set_i18n_locale_from_params
+  before_filter :set_locale
   before_filter :authorize
   before_filter :register_globals
   before_filter :check_user_not_banned
@@ -31,49 +31,49 @@ private
     Time.zone = @current_user.time_zone if @current_user
   end
 protected
-    def set_i18n_locale_from_params
-        if params[:locale]
-          if I18n.available_locales.include?(params[:locale].to_sym)
-            I18n.locale = params[:locale]
-            session[:locale] = params[:locale]
-            cookies.permanent[:locale_set] = params[:locale]
-          else
-            if session[:locale]
-              #params[:locale] = session[:locale]
-              #I18n.locale = session[:locale]
-              #locale_redirect(session[:locale])
-              #redirect_to request.url  #, notice: "Translation \"#{params[:locale]}\" not available."
-              #logger.error flash.now[:notice]
-              redirect_to url_for(locale: session[:locale])
-            elsif cookies[:locale_set]
-              session[:locale] = cookies[:locale_set]
-              params[:locale] = cookies[:locale_set]
-              I18n.locale = cookies[:locale_set]
-              #locale_redirect(session[:locale])
-            else
-              locale = get_best_locale
-              params[:locale] = locale
-              session[:locale] = locale
-              cookies.permanent[:locale_set] = locale
-              I18n.locale = locale
-              #locale_redirect(I18n.locale)
-            end
-          end
-        elsif session[:locale]
-          #I18n.locale = session[:locale]
-          redirect_to url_for(locale: session[:locale]), :status => :moved_permanently
-        elsif cookies[:locale_set]
-          #I18n.locale = cookies[:locale_set]
-          redirect_to url_for(locale: cookies[:locale_set]), :status => :moved_permanently
-        else
+   # def set_i18n_locale_from_params
+  #      if params[:locale]
+  #        if I18n.available_locales.include?(params[:locale].to_sym)
+  #          I18n.locale = params[:locale]
+  #          session[:locale] = params[:locale]
+  #          cookies.permanent[:locale_set] = params[:locale]
+  #        else
+  #          if session[:locale]
+  #            #params[:locale] = session[:locale]
+  #            #I18n.locale = session[:locale]
+  #            #locale_redirect(session[:locale])
+  #            #redirect_to request.url  #, notice: "Translation \"#{params[:locale]}\" not available."
+  #            #logger.error flash.now[:notice]
+  #            redirect_to url_for(locale: session[:locale])
+  #          elsif cookies[:locale_set]
+  #            session[:locale] = cookies[:locale_set]
+  #            params[:locale] = cookies[:locale_set]
+  #            I18n.locale = cookies[:locale_set]
+  #            #locale_redirect(session[:locale])
+  #         else
+  #            locale = get_best_locale
+  #            params[:locale] = locale
+  #            session[:locale] = locale
+  #            cookies.permanent[:locale_set] = locale
+  #            I18n.locale = locale
+  #            #locale_redirect(I18n.locale)
+  #          end
+  #        end
+  #      elsif session[:locale]
+  #        #I18n.locale = session[:locale]
+  #        redirect_to url_for(locale: session[:locale]), :status => :moved_permanently
+  #      elsif cookies[:locale_set]
+  #        #I18n.locale = cookies[:locale_set]
+  #        redirect_to url_for(locale: cookies[:locale_set]), :status => :moved_permanently
+  #      else
           #I18n.locale = get_best_locale
-          redirect_to url_for(locale: get_best_locale), :status => :moved_permanently
-        end
-      end
+  #        redirect_to url_for(locale: get_best_locale), :status => :moved_permanently
+  #      end
+  #    end
 
-      def default_url_options
-        { locale: I18n.locale }
-      end
+     # def default_locale
+     #   { locale: I18n.locale }
+     # end
       
 #      def check_locale_parameter
 #        if session[:locale]
@@ -99,7 +99,29 @@ protected
 #      end
       
       
-      
+      def set_locale
+        if params[:locale]
+          if I18n.available_locales.include?(params[:locale].to_sym)
+            session[:locale] = params[:locale]
+            cookies[:locale_set] = params[:locale]
+            I18n.locale = params[:locale]
+          else
+            I18n.locale = get_best_locale
+          end
+        elsif session[:locale] or cookies[:locale_set]
+          if session[:locale]
+            I18n.locale = session[:locale]
+          else
+            I18n.locale = cookies[:locale_set]
+          end
+        else
+          best_locale = get_best_locale
+          session[:locale] = best_locale
+          cookies[:locale_set] = best_locale
+          I18n.locale = best_locale
+        end
+      end
+        
       def get_best_locale
         unless request.env['HTTP_ACCEPT_LANGUAGE'].nil?
           locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first.to_sym
