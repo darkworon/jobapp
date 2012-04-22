@@ -181,7 +181,7 @@ protected
     end
     
     def check_user_is_activated
-      flash.now[:info] = "Ваш аккаунт еще не активирован. После активации созданные вами вакансии и резюме появятся в поиске.<br />#{view_context.link_to 'Письмо активации не пришло мне на почту', resend_activation_path, class: "resend_act_email", remote: true}.".html_safe if @current_user and !@current_user.is_activated?
+      flash.now[:info] = "#{I18n.t(".global.not_activated_msg")}<br />#{view_context.link_to I18n.t('.global.resend_activation_link'), resend_activation_path, class: "resend_act_email", remote: true}".html_safe if @current_user and !@current_user.is_activated?
     end
     
     def random_string

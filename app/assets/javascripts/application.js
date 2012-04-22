@@ -58,18 +58,6 @@ $(function() {
  // return false;
 //});
 });
-$(document).ready(function() {
-	//ajaxifyPagination();
-	$("#set_locale").change(function() {
-		var url = $(this).val();
-		window.location = url;
-	});
-	$(".resend_act_email").click(function(){
-		$(this).closest("div").show();
-		$.flash_notice("Отправка письма активации...", 3);
-	});
-	
-});
 
 jQuery.fn.topLink = function(settings) {
   settings = jQuery.extend({

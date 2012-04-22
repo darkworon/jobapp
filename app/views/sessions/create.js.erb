@@ -4,6 +4,6 @@ $("div#controlpanel").html('<%= escape_javascript(render(:partial => "/layouts/t
 //$.flash_notice("Вы вошли, как <%= @current_user.email %>", 4);
 window.location = '<%= home_path %>';
 <% else %>
-$.flash_error("Неверная комбианция email/пароля", 5);
+$.flash_error('<%= t(".incorrect_combination")%>', 5);
 $("#lazybox").find("button").removeAttr("disabled");
 <% end %>

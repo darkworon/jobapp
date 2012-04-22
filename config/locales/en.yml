@@ -3,6 +3,8 @@ en:
     errors:
       verification_failed: 'CAPTCHA is entered not properly.'
   global:
+    not_activated_msg: Your account is not activated yet. After activation, your vacancies and resumes will be shown in the search.
+    resend_activation_link: Email activation link did not come.
     are_you_sure: Are you sure?
     ok: OK
     cancel: Cancel
@@ -48,7 +50,26 @@ en:
     logged_in_as: "You are logged as %{email}."
     already_logged_in_as: "You are already loggead as %{email}."
     logged_out: "You logged out."
+  activations:
+    resend:
+        resended: Resended. Check your mail.
   sessions:
+    create:
+        incorrect_combination: Incorrect email/password combination
+    login:
+        forgot_password: Forgot your password?
+        recover: Recover
+        your_account: your account.
+        register: Register
+        if_you_dont_yet: " if you don't registered yet."
+        title: Login
+        log_in_legend: 'Login'
+        email: "Email:"
+        password: "Password:"
+        submit: 'Login'
+        dont_have_acc_yet: "Not registered yet?"
+        register: Register
+        now: now!
     new:
       forgot_password: Forgot your password?
       recover: Recover
@@ -334,6 +355,13 @@ en:
       sexes:
           '1': 'Man'
           '2': 'Woman'
+  user:
+      statuses:
+          '-1': "Banned"
+          '0': "Not activated"
+          '1': "User"
+          '2': "Moderator"
+          '3': "Admin"
   date:
     abbr_day_names:
     - Sun

@@ -1,7 +1,7 @@
 <!-- start control panel -->
         	<ul>
 			<% if @current_user %>
-    		<li><p><%= (t '.hello_username', username: html_escape(@current_user.name)).html_safe %> <% if @current_user.status != 1 %>(<%= @current_user.text_status %>)<% end %></p></li>
+    		<li><p><%= (t '.hello_username', username: html_escape(@current_user.name)).html_safe %> <% if @current_user.status != 1 %>(<%= @current_user.translated_status %>)<% end %></p></li>
 			<% if @current_user.status == 3 %>
 			<li><%= link_to t ".admin", admin_path, class: "first" %></li>
 			<% end %>

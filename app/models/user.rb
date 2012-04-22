@@ -85,18 +85,8 @@ class User < ActiveRecord::Base
     name
   end
   
-  def text_status
-    if status == -1
-      "Забанен"
-    elsif status == 0
-      "Неактивирован"
-    elsif status == 1
-      "Юзер"
-    elsif status == 2
-      "Модератор"
-    elsif status == 3
-      "Админ"
-    end
+  def translated_status
+    I18n.t(status, :scope => '.user.statuses')
   end
   
   

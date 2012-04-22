@@ -26,7 +26,7 @@ class ActivationsController < ApplicationController
         unless @current_user.is_activated?
           @current_user.activations.destroy_all
           @current_user.activations.create(link: random_string)
-          UserNotifier.signup(@current_user.activations.first).deliver
+          UserNotifier.delay.signup(@current_user.activations.first)
           format.js
           unless request.env['HTTP_REFERER'].blank?
             format.html { redirect_to :back, notice: "Ссылка активации была выслана заново." }

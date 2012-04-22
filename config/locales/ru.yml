@@ -3,6 +3,9 @@ ru:
     errors:
       verification_failed: 'Captcha введена неверно.'
   global:
+    not_activated_msg: Ваш аккаунт еще не активирован. После активации созданные вами вакансии и резюме появятся в поиске
+    resend_activation_link: Письмо активации не пришло мне на почту.
+    banned_msg: 
     are_you_sure: Вы уверены?
     ok: ОК
     cancel: Отмена
@@ -92,8 +95,26 @@ ru:
       create_new_vacancy: Создать вакансию
       my_vacancies: Мои вакансии
       favorite_vacancies: Избранные вакансии
-
+  activations:
+      resend:
+          resended: Отправлено. Проверьте Вашу почту.
   sessions:
+    create:
+        incorrect_combination: Неверная комбинация email/пароля
+    login:
+        forgot_password: Забыли пароль?
+        recover: Восстановите
+        your_account: Ваш аккаунт.
+        register: Зарегистрируйтесь
+        if_you_dont_yet: ", если вы еще не сделали этого."
+        title: Вход
+        log_in_legend: 'Авторизация'
+        email: "Email:"
+        password: "Пароль:"
+        submit: 'Войти'
+        dont_have_acc_yet: "Еще не зарегистрированы?"
+        register: Зарегистрируйтесь
+        now: сейчас!
     new:
       forgot_password: Забыли пароль?
       recover: Восстановите
@@ -339,6 +360,13 @@ ru:
       sexes:
           '1': 'Мужчина'
           '2': 'Женщина'
+  user:
+      statuses:
+          '-1': "Забанен"
+          '0': "Неактивирован"
+          '1': "Пользователь"
+          '2': "Модератор"
+          '3': "Администратор"
   date:
     abbr_day_names:
     - Вс
