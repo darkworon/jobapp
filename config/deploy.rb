@@ -32,7 +32,7 @@ after 'deploy:update_code', :roles => :app do
   run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
   run "cd #{current_release} && bundle exec whenever -w && bundle exec whenever -u"
   run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=production"
-  run "cd #{current_release} && bundle exec rake thinking_sphinx:index RAILS_ENV=production"
+  run "cd #{current_release} && bundle exec rake ts:restart RAILS_ENV=production"
   run "cd #{current_release} && bundle exec rake -s sitemap:refresh RAILS_ENV=production"
   run "RAILS_ENV=production #{current_release}/script/delayed_job restart"
 end
