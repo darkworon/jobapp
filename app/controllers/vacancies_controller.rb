@@ -1,5 +1,6 @@
 # encoding: utf-8
 class VacanciesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   skip_before_filter :authorize, only: [:show]
   #before_filter :user_is_activated
   # GET /vacancies
@@ -19,6 +20,7 @@ class VacanciesController < ApplicationController
   def show
     @vacancy = Vacancy.find(params[:id])
     @content_for_title = @vacancy.title
+    @page_content_description = "Требования: #{truncate(@vacancy.career.gsub(/\r/," ").gsub(/\n/,""), length: 60)}. Условия: #{truncate(@vacancy.description.gsub(/\r/," ").gsub(/\n/,""), length: 60)}"
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @vacancy }

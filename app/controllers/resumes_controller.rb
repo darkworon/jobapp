@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ResumesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   #before_filter :user_is_activated
   skip_before_filter :authorize, only: :priority
   # GET /resumes
@@ -19,6 +20,7 @@ class ResumesController < ApplicationController
   def show
     @resume = Resume.find(params[:id])
     @content_for_title = @resume.title
+    @page_content_description = "Карьера: #{truncate(@resume.career.gsub(/\r/," ").gsub(/\n/,""), length: 50)}. Навыки и знания: #{truncate(@resume.description.gsub(/\r/," ").gsub(/\n/,""), length: 50)}"
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resume }

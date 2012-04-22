@@ -1,9 +1,25 @@
+# encoding: UTF-8
+
 module ApplicationHelper
   def page_title
     if @content_for_title
-      (@content_for_title)
+      @content_for_title
     else
       @site_title
+    end
+  end
+  def page_content_title
+    if @content_for_title
+      "#{@content_for_title} - #{@site_title}"
+    else
+      @site_title
+    end
+  end
+  def page_content_description
+    if @page_content_description
+      @page_content_description
+    else
+      "Первый сайт, на котором вы можете без труда найти работу или соотрудника для своей компании. При этом, вам не придется заполнять кучу бесполезных форм."
     end
   end
   def username(user)
