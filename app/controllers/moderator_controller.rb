@@ -4,12 +4,12 @@ class ModeratorController < ApplicationController
   def index
   end
   def vacancies
-    @vacancies = Vacancy.all.paginate :per_page => 20, :page => params[:page], :order => 'created_at DESC'
+    @vacancies = Vacancy.paginate :per_page => 20, :page => params[:page], :order => 'created_at DESC'
   end
   def resumes
-    @resumes = Resume.all.paginate :per_page => 20, :page => params[:page], :order => 'created_at DESC'
+    @resumes = Resume.paginate :per_page => 20, :page => params[:page], :order => 'created_at DESC'
   end
   def users
-    @users = User.all.paginate :per_page => 20, :page => params[:page], :order => 'created_at DESC'
+    @users = User.paginate :per_page => 20, :page => params[:page], :order => 'created_at DESC'
   end
 end

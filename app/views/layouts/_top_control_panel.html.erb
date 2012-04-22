@@ -3,10 +3,10 @@
 			<% if @current_user %>
     		<li><p><%= (t '.hello_username', username: html_escape(@current_user.name)).html_safe %> <% if @current_user.status != 1 %>(<%= @current_user.translated_status %>)<% end %></p></li>
 			<% if @current_user.status == 3 %>
-			<li><%= link_to t ".admin", admin_path, class: "first" %></li>
+			<li><%= link_to t(".admin"), admin_path, class: "first" %></li>
 			<% end %>
 			<% if @current_user.status == 2 %>
-			<li><%= link_to t ".moderator", moderator_path, class: "first" %></li>
+			<li><%= link_to t(".moderator"), moderator_path, class: "first" %></li>
 			<% end %>
 			<li><%= link_to t(".new_events", count: @current_user.unreaded_recieved_resume_responses.count + @current_user.unreaded_recieved_vacancy_responses.count + @current_user.unreaded_sent_resume_responses.count + @current_user.unreaded_sent_vacancy_responses.count), responses_path %></li>
 
