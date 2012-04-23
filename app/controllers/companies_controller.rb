@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
     
     @company = Company.find(params[:id])
     @content_for_title = @company.short_name
-    @page_content_description = truncate(@company.description, lenght:160)
+    @page_content_description = @company.description.gsub(/\r/," ").gsub(/\n/,"")
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }
