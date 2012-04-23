@@ -11,7 +11,7 @@ class CatalogController < ApplicationController
     @resumes = Resume.authenticated.paginate(:page => params[:page], :per_page => 10)
   end
   def companies
-    @content_for_title = "Каталог копаний"
+    @content_for_title = "Каталог компаний"
     @companies = Company.authenticated.paginate(:page => params[:page], :per_page => 10)
   end
 end
