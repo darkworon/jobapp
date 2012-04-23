@@ -1,12 +1,18 @@
 <% if params[:action] == "vacancies" %>
+
+<li><%= link_to "Каталог", catalog_vacancies_path, class: sub_active_ca?("catalog","vacancies"), :rel => 'nofollow' %></li>
 	<li><%= link_to t('vacancies.subnav.create_new_vacancy'), new_vacancy_path, class: [sub_active_ca?("vacancies","new"), sub_active_ca?("vacancies","create")], :rel => 'nofollow'%></li>
 	<li><%= link_to t('vacancies.subnav.my_vacancies'), vacancies_path, class: cp_sub(vacancies_path), :rel => 'nofollow' %></li>
 	<li><%= link_to t('vacancies.subnav.favorite_vacancies'), favorite_vacancies_path, class: ["sub_nav_last", cp_sub(favorite_vacancies_path)], :rel => 'nofollow' %></li>
+	
 <% elsif params[:action] == "resumes" %>
+<li><%= link_to "Каталог", catalog_resumes_path, class: sub_active_ca?("catalog","resumes"), :rel => 'nofollow' %></li>
 <li><%= link_to "Создать резюме", new_resume_path, class: [sub_active_ca?("resumes","new"), sub_active_ca?("resumes","create")], :rel => 'nofollow' %></li>
 <li><%= link_to "Мои резюме", resumes_path, class: cp_sub(resumes_path), :rel => 'nofollow' %></li>
 <li><%= link_to "Избранные резюме", favorite_resumes_path, class: ["sub_nav_last", cp_sub(favorite_resumes_path)], :rel => 'nofollow' %></li>
+
 <% elsif params[:action] == "companies" %>
+<li><%= link_to "Каталог", catalog_companies_path, class: sub_active_ca?("catalog","companies"), :rel => 'nofollow' %></li>
 <li><%= link_to "Создать компанию", new_company_path, class: sub_active_ca?("companies", "new"), :rel => 'nofollow' %></li>
 <li><%= link_to "Мои компании", companies_path, class: ["sub_nav_last", cp_sub(companies_path)], :rel => 'nofollow' %></li>
 <% end %>
