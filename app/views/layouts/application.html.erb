@@ -13,7 +13,7 @@
 <%= javascript_include_tag "application" %>
 <%= javascript_include_tag "jquery.ba-hashchange.min" %>
 <%= javascript_include_tag "jquery.ba-url.min" %>
-<% if params[:locale] == "ru" %>
+<% if I18n.locale == :ru %>
 <%= javascript_include_tag "jquery.datepick-ru" %>
 <% end %>
 
