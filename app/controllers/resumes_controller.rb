@@ -2,7 +2,7 @@
 class ResumesController < ApplicationController
   include ActionView::Helpers::TextHelper
   #before_filter :user_is_activated
-  skip_before_filter :authorize, only: :priority
+  skip_before_filter :authorize, only: [:show, :priority]
   # GET /resumes
   # GET /resumes.json
   def index
