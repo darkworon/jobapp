@@ -1,0 +1,36 @@
+<style type="text/css" media="screen">
+	span.header {
+		font-family: Tahoma, Geneva, sans-serif; margin-top: 10px; margin-bottom: 20px; color: #666;
+		font-weight:bold;
+		margin-bottom:20px;
+		margin-top:25px;
+		font-size: 15px; color: #666; text-transform: uppercase;
+		display:block;
+	}
+	span {
+		display:block;
+		margin-top:7px;
+		margin-bottom:7px;
+	}
+	h2 {
+		text-decoration:none;
+		border:none;
+	}
+	p.description {
+		margin-top:-15px;
+	}
+</style>
+<% unless @companies.empty? %>
+			<% @companies.each do |company| %>
+		    	<h2><%= link_to company.short_name, company, target: :_blank %></h2>
+				<% unless company.description.blank? %>
+				<p class="description">	
+				<span><%= truncate(company.description, :length => 300) %></span><% end %>
+				</p><br />
+			<% end %>
+
+			<%= will_paginate @companies, id: "pagination", class: "search_pagination"  %>
+		<% end %>
+	</div>
+	</div>
+</div>

@@ -189,6 +189,7 @@ ru:
       title: Поиск работы
       select_language: 'Выберите язык:'
     top_control_panel:
+      admin: Админ
       logout: 'Выход'
       hello_username: "Привет, <strong>%{username}</strong>!"
       new_events:

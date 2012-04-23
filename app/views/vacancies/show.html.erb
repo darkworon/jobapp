@@ -30,7 +30,19 @@ p.actions {
 	color:#bfbfbf;
 }
 </style>
-<h1><%= @vacancy.title %></h1>
+<h1><%= @vacancy.title %><!-- Place this tag where you want the +1 button to render -->
+<g:plusone></g:plusone>
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script></h1>
 
 <p>
   <span class="header">Требования:</span>
@@ -69,6 +81,21 @@ p.actions {
 <p class="dates">
 	<span class="header"></span>
 	<span>Опубликовано <%= l @vacancy.created_at, format: :long %></span>
+</p>
+<p>
+<span>
+<!-- Place this tag where you want the +1 button to render -->
+<g:plusone></g:plusone>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</span>
 </p>
 <p class="actions">
 <% if @vacancy.user != @current_user or !@current_user %>

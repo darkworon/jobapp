@@ -21,7 +21,19 @@
 <meta name="title" content="<%= page_content_title %>">
 <meta name="description" content="<%= page_content_description %>">
 <meta name="keywords" content="работа поиск работы вакансии резюме устроиться зарплата фриланс соотрудник соискатель найти_работу суперджоб superjob job4fun job_for_fun">
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31115921-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 <script type="text/javascript">
 //$(document).ready(
 //  function(){
@@ -68,6 +80,10 @@
 				<li><%= link_to t(".resumes"), resumes_path, class: [is_active?("resumes"), is_active_ca?("favorites", "resumes")] %></li>
 				<li><%= link_to t(".companies"), companies_path, class: is_active?("companies") %></li>
                 <li><%= link_to t(".profile"), user_profile_path, class: [is_active_ca?("users", "profile"), is_active_ca?("users", "subscriptions")] %></li>
+<% else %>
+<li><%= link_to t(".vacancies"), catalog_vacancies_path, class: is_active_ca?("catalog", "vacancies") %></li>
+<li><%= link_to t(".resumes"), catalog_resumes_path, class: is_active_ca?("catalog", "resumes") %></li>
+<li><%= link_to t(".companies"), catalog_companies_path, class: is_active_ca?("catalog", "companies") %></li>
 <% end %>
             </ul>
           

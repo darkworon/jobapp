@@ -2,6 +2,7 @@ Jobapp::Application.routes.draw do
   #scope '(:locale)' do
     match "catalog/vacancies" => "catalog#vacancies"
     match "catalog/resumes" => "catalog#resumes"
+    match "catalog/companies" => "catalog#companies"
     resources :vacancies
     resources :resumes
     resources :companies

@@ -1,5 +1,6 @@
 # encoding: utf-8
 class CompaniesController < ApplicationController
+  skip_before_filter :authorize, only: :show
   # GET /companies
   # GET /companies.json
   def index

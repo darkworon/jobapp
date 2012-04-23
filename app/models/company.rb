@@ -11,7 +11,7 @@ class Company < ActiveRecord::Base
   validates_format_of :kpp, with: /^\d{9}$/i, allow_blank: true
   
   before_save :sanitize_contacts
-  
+  scope :authenticated, { joins: :owner, :conditions=> {users: { status: [1, 2, 3] } }, :order => 'short_name'}
   
   def sanitize_contacts
     self.website = self.website.gsub(/(http:\/\/|https:\/\/)/, "")
