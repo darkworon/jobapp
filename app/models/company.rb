@@ -2,7 +2,7 @@ class Company < ActiveRecord::Base
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
   has_many :vacancies
   has_many :resumes
-  validates :short_name, :official_name, :legal_address, :phone_1, :presence => true
+  validates :short_name, :official_name, :legal_address, :phone_1, :description, :presence => true
   
   validates_format_of :email_1, :email_2, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i, allow_blank: true
   validates_format_of :inn, with: /^\d{10}$/i

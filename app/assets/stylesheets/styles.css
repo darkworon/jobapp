@@ -1150,7 +1150,7 @@ top: 1px;
 .field_with_errors label {
 	color:red;
 }
-.field_with_errors .text {
+.field_with_errors .text, .field_with_errors textarea {
 	background-color:#ffbac3;
 }
 #error_explanation h4, #error_explanation ul li {
