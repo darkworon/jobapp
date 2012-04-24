@@ -35,7 +35,11 @@ class SearchController < ApplicationController
   end
 
   def vacancy
-    @content_for_title = t('search.vacancy.site_title')
+    if request.path == search_vacancy_path
+      @content_for_title = t('search.vacancy.site_title')
+    else
+      @content_for_title = @site_title
+    end
     respond_to do |format|
       if params[:search]
         unless params[:search].blank?

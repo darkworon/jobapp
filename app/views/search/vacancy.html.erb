@@ -1,4 +1,7 @@
 <script type="text/javascript" charset="utf-8">
+$(function(){
+	document.title = '<%= t(".site_title") %>';
+});
 function setUrlTitle() {
 	var text = $("input#search").val();
 	if ($.fragment().page){
@@ -8,9 +11,9 @@ function setUrlTitle() {
 	}
 	$.setFragment({ "search" : text });
 	if ($("input#search").val() != ""){
-		document.title = $("input#search").val() + " - <%= @site_title_base %> ";;
+		document.title = $("input#search").val() + " - <%= @site_title_base %> ";
 	} else {
-		document.title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";;
+		document.title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";
 	}
 }
 	$(function(){
@@ -22,17 +25,17 @@ function setUrlTitle() {
 					$("html,body").scrollTop(0);
 					var title_start;
 					if ($.fragment().search) {
-						title = $.fragment().search + " - <%= @site_title_base %> ";;
+						title = $.fragment().search + " - <%= @site_title_base %> ";
 					} else {
 						title = "<%= t('.all') %>";
 					}
-					document.title = title + " - <%= t('.page') %> " + $.fragment().page + " - <%= @site_title_base %> ";;
+					document.title = title + " - <%= t('.page') %> " + $.fragment().page + " - <%= @site_title_base %> ";
 				} else {
 					var title;
 					if ($.fragment().search) {
-						title = $.fragment().search + " - <%= @site_title_base %> ";;
+						title = $.fragment().search + " - <%= @site_title_base %> ";
 					} else {
-						title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";;
+						title = "<%= t('.all') %>" + " - <%= @site_title_base %> ";
 					}
 					document.title = title;
 				}

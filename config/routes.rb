@@ -110,13 +110,12 @@ Jobapp::Application.routes.draw do
     #resources :users
     
     root to: 'search#vacancy', as: 'home'
+    get "search/resume" => "search#resume"
+    get "search/vacancy" => "search#vacancy"
     #get 'home' => 'home#index'
     get 'about' => 'home#about'
     #match "search/resume(/:search(/:page))" => 'search#resume', :as => :search_res
     #match "search/vacancy(/:search(/:page))" => 'search#vacancy', :as => :search_vac
-    get "search/resume" => "search#resume"
-    get "search/vacancy" => "search#vacancy"
-    
   #end
 
   # The priority is based upon order of creation:
