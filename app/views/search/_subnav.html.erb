@@ -1,2 +1,2 @@
-<li><%= link_to t('resumes.subnav.create_new_resume'), new_resume_path, class: [sub_active_ca?("resumes","new"), sub_active_ca?("resumes","create")]%></li>
-<li><%= link_to t('vacancies.subnav.create_new_vacancy'), new_vacancy_path, class: [sub_active_ca?("vacancies","new"), sub_active_ca?("vacancies","create"), "sub_nav_last"]%></li>
+<li><%= link_to t('resumes.subnav.create_new_resume'), new_resume_path, class: [sub_active_ca?("resumes","new"), sub_active_ca?("resumes","create")], :rel => 'nofollow' %></li>
+<li><%= link_to t('vacancies.subnav.create_new_vacancy'), new_vacancy_path, class: [sub_active_ca?("vacancies","new"), sub_active_ca?("vacancies","create"), "sub_nav_last"], :rel => 'nofollow' %></li>

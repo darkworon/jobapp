@@ -4,6 +4,7 @@ class SearchController < ApplicationController
   skip_before_filter :authorize
   def resume
     @content_for_title = t('search.resume.site_title')
+    @page_content_description = "Поиск по ранее созданным резюме. Найдите соотрудников для своей компании."
     respond_to do |format|
       
       if params[:search]
@@ -37,6 +38,7 @@ class SearchController < ApplicationController
   def vacancy
     if request.path == search_vacancy_path
       @content_for_title = t('search.vacancy.site_title')
+      @page_content_description = "Поиск по ранее созданным вакансиям. Найдите подходящую работу для себя."
     else
       @content_for_title = @site_title
     end
