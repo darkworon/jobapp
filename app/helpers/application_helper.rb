@@ -9,7 +9,7 @@ module ApplicationHelper
     end
   end
   def page_content_title
-    if @content_for_title
+    if @content_for_title and @content_for_title != @site_title
       "#{@content_for_title} - #{@site_title}"
     else
       @site_title
